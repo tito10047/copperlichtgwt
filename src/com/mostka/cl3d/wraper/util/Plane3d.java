@@ -17,14 +17,14 @@ public class Plane3d extends JavaScriptObject{
 	/**
 	 * plane distance to origin
 	 */
-	public final native Number getD() /*-{
+	public final native int getD() /*-{
 		return this.D;
 	}-*/;
 
 	/**
 	 * plane distance to origin
 	 */
-	public final native void setD(Number D) /*-{
+	public final native void setD(int D) /*-{
 		this.D = D;
 	}-*/;
 

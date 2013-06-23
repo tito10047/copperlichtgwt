@@ -16,35 +16,35 @@ public class Vect2d extends JavaScriptObject {
 	 *            coordinate.
 	 */
 
-	public static native Vect2d create(Number x, Number y) /*-{
+	public static native Vect2d create(int x, int y) /*-{
 		return new $wnd.CL3D.Vect2d(x, y);
 	}-*/;
 
 	/**
 	 * X coordinate of the vector
 	 */
-	public final native Number getX() /*-{
+	public final native double getX() /*-{
 		return this.X;
 	}-*/;
 
 	/**
 	 * X coordinate of the vector
 	 */
-	public final native void setX(Number X) /*-{
+	public final native void setX(int X) /*-{
 		this.X = X;
 	}-*/;
 
 	/**
 	 * Y coordinate of the vector
 	 */
-	public final native Number getY() /*-{
+	public final native double getY() /*-{
 		return this.Y;
 	}-*/;
 
 	/**
 	 * Y coordinate of the vector
 	 */
-	public final native void setY(Number Y) /*-{
+	public final native void setY(int Y) /*-{
 			this.Y=Y;
 	}-*/;
 

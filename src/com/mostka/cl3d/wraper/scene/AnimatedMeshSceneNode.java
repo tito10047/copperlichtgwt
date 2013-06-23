@@ -36,7 +36,7 @@ public class AnimatedMeshSceneNode extends SceneNodeAbs {
 	}-*/;
 
 	/**
-	 * Returns the currently displayed frame number.
+	 * Returns the currently displayed frame int.
 	 */
 	public final native JavaScriptObject getFrameNr() /*-{
 		return this.getFrameNr();
@@ -72,7 +72,7 @@ public class AnimatedMeshSceneNode extends SceneNodeAbs {
 	 * 
 	 * @param name
 	 */
-	public final native JavaScriptObject setAnimation(JavaScriptObject name) /*-{
+	public final native boolean setAnimation(String name) /*-{
 		return this.setAnimation(name);
 	}-*/;
 

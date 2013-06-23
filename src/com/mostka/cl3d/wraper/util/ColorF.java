@@ -7,7 +7,7 @@ public class ColorF extends JavaScriptObject{
 	protected ColorF(){}
 
 	/**
-	 * A class holding a floating point color, consisting of four Numbers, for r, g, b and alpha
+	 * A class holding a floating point color, consisting of four ints, for r, g, b and alpha
 	 */
 
 	public static native ColorF create() /*-{
@@ -17,56 +17,56 @@ public class ColorF extends JavaScriptObject{
 	/**
 	 * alpha value of the color
 	 */
-	public final native Number getA() /*-{
+	public final native int getA() /*-{
 			return this.A;
 	}-*/;
 
 	/**
 	 * alpha value of the color
 	 */
-	public final native void setA(Number A) /*-{
+	public final native void setA(int A) /*-{
 			this.A=A;
 	}-*/;
 
 	/**
 	 * blue value of the color
 	 */
-	public final native Number getB() /*-{
+	public final native int getB() /*-{
 			return this.B;
 	}-*/;
 
 	/**
 	 * blue value of the color
 	 */
-	public final native void setB(Number B) /*-{
+	public final native void setB(int B) /*-{
 			this.B=B;
 	}-*/;
 
 	/**
 	 * green value of the color
 	 */
-	public final native Number getG() /*-{
+	public final native int getG() /*-{
 			return this.G;
 	}-*/;
 
 	/**
 	 * green value of the color
 	 */
-	public final native void setG(Number G) /*-{
+	public final native void setG(int G) /*-{
 			this.G=G;
 	}-*/;
 
 	/**
 	 * red value of the color
 	 */
-	public final native Number getR() /*-{
+	public final native int getR() /*-{
 			return this.R;
 	}-*/;
 
 	/**
 	 * red value of the color
 	 */
-	public final native void setR(Number R) /*-{
+	public final native void setR(int R) /*-{
 			this.R=R;
 	}-*/;
 

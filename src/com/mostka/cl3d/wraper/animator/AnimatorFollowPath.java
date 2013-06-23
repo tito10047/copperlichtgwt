@@ -56,7 +56,7 @@ Can be
 	 * @param lookIntoMovementDirection true if the node should look into the movement direction or false 
 if not.
 	 */
-	public final native JavaScriptObject setOptions(Number endmode, Number timeNeeded, Boolean lookIntoMovementDirection) /*-{
+	public final native JavaScriptObject setOptions(int endmode, int timeNeeded, Boolean lookIntoMovementDirection) /*-{
 		return this.setOptions(endmode, timeNeeded, lookIntoMovementDirection);
 	}-*/;
 

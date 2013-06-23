@@ -24,56 +24,56 @@ public class Quaternion extends JavaScriptObject {
 	/**
 	 * W component of the Quaternion
 	 */
-	public final native Number getW() /*-{
+	public final native int getW() /*-{
 		return this.W;
 	}-*/;
 
 	/**
 	 * W component of the Quaternion
 	 */
-	public final native void setW(Number W) /*-{
+	public final native void setW(int W) /*-{
 		this.W = W;
 	}-*/;
 
 	/**
 	 * X component of the Quaternion
 	 */
-	public final native Number getX() /*-{
+	public final native int getX() /*-{
 		return this.X;
 	}-*/;
 
 	/**
 	 * X component of the Quaternion
 	 */
-	public final native void setX(Number X) /*-{
+	public final native void setX(int X) /*-{
 		this.X = X;
 	}-*/;
 
 	/**
 	 * Y component of the Quaternion
 	 */
-	public final native Number getY() /*-{
+	public final native int getY() /*-{
 		return this.Y;
 	}-*/;
 
 	/**
 	 * Y component of the Quaternion
 	 */
-	public final native void setY(Number Y) /*-{
+	public final native void setY(int Y) /*-{
 		this.Y = Y;
 	}-*/;
 
 	/**
 	 * Z component of the Quaternion
 	 */
-	public final native Number getZ() /*-{
+	public final native int getZ() /*-{
 		return this.Z;
 	}-*/;
 
 	/**
 	 * Z component of the Quaternion
 	 */
-	public final native void setZ(Number Z) /*-{
+	public final native void setZ(int Z) /*-{
 		this.Z = Z;
 	}-*/;
 

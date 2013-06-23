@@ -61,7 +61,7 @@ public class Renderer extends JavaScriptObject {
 	 * @param clearColor
 	 *            Color for the background. See
 	 */
-	public final native JavaScriptObject beginScene(Number clearColor) /*-{
+	public final native JavaScriptObject beginScene(int clearColor) /*-{
 		return this.beginScene(clearColor);
 	}-*/;
 
@@ -133,7 +133,7 @@ public class Renderer extends JavaScriptObject {
 	 * @param srcRightX
 	 * @param srcBottomY
 	 */
-	public final native JavaScriptObject draw2DImage(Number x, Number y, Number width, Number height, Texture tex, Boolean blend, JavaScriptObject shaderToUse,
+	public final native JavaScriptObject draw2DImage(int x, int y, int width, int height, Texture tex, Boolean blend, JavaScriptObject shaderToUse,
 			JavaScriptObject srcRightX, JavaScriptObject srcBottomY) /*-{
 		return this.draw2DImage(x, y, width, height, tex, blend, shaderToUse,
 				srcRightX, srcBottomY);
@@ -154,7 +154,7 @@ public class Renderer extends JavaScriptObject {
 	 *            (optional) set to true to enable alpha blending (using the
 	 *            alpha component of the color) and false not to blend
 	 */
-	public final native JavaScriptObject draw2DRectangle(Number x, Number y, Number width, Number height, Number color, Boolean blend) /*-{
+	public final native JavaScriptObject draw2DRectangle(int x, int y, int width, int height, int color, Boolean blend) /*-{
 		return this.draw2DRectangle(x, y, width, height, color, blend);
 	}-*/;
 
@@ -206,7 +206,7 @@ public class Renderer extends JavaScriptObject {
 	/**
 	 * Returns the current height of the rendering surface in pixels.
 	 */
-	public final native JavaScriptObject getHeight() /*-{
+	public final native int getHeight() /*-{
 		return this.getHeight();
 	}-*/;
 
@@ -234,7 +234,7 @@ public class Renderer extends JavaScriptObject {
 	/**
 	 * Returns the current width of the rendering surface in pixels.
 	 */
-	public final native JavaScriptObject getWidth() /*-{
+	public final native int getWidth() /*-{
 		return this.getWidth();
 	}-*/;
 

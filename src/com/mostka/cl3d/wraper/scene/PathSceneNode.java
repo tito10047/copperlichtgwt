@@ -49,7 +49,7 @@ public class PathSceneNode extends SceneNodeAbs {
 	 * the path nodes. With this, you can create for example either cardinal
 	 * splines (tightness != 0.5) or catmull-rom-splines (tightness == 0.5).
 	 */
-	public final native Number getTightness() /*-{
+	public final native int getTightness() /*-{
 		return this.Tightness;
 	}-*/;
 
@@ -58,7 +58,7 @@ public class PathSceneNode extends SceneNodeAbs {
 	 * the path nodes. With this, you can create for example either cardinal
 	 * splines (tightness != 0.5) or catmull-rom-splines (tightness == 0.5).
 	 */
-	public final native void setTightness(Number Tightness) /*-{
+	public final native void setTightness(int Tightness) /*-{
 		this.Tightness = Tightness;
 	}-*/;
 
@@ -78,7 +78,7 @@ public class PathSceneNode extends SceneNodeAbs {
 	 * @param idx
 	 *            Index of the path node
 	 */
-	public final native JavaScriptObject getPathNodePosition(Number idx) /*-{
+	public final native JavaScriptObject getPathNodePosition(int idx) /*-{
 		return this.getPathNodePosition(idx);
 	}-*/;
 
@@ -91,7 +91,7 @@ public class PathSceneNode extends SceneNodeAbs {
 	 *            the path scene node, set to false to receive the position in
 	 *            absolute world space.
 	 */
-	public final native JavaScriptObject getPointOnPath(Number posOnPath, Boolean relative) /*-{
+	public final native JavaScriptObject getPointOnPath(int posOnPath, Boolean relative) /*-{
 		return this.getPointOnPath(posOnPath, relative);
 	}-*/;
 

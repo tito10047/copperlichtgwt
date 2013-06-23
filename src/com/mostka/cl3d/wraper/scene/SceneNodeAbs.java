@@ -19,14 +19,14 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	/**
 	 * Defines the id of the scene node, completely freely usable by the user.
 	 */
-	public final native Number getId() /*-{
+	public final native int getId() /*-{
 		return this.Id;
 	}-*/;
 
 	/**
 	 * Defines the id of the scene node, completely freely usable by the user.
 	 */
-	public final native void setId(Number Id) /*-{
+	public final native void setId(int Id) /*-{
 		this.Id = Id;
 	}-*/;
 
@@ -54,16 +54,25 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 		return this.Pos;
 	}-*/;
 	
-	public final native void setPos(int x, int y) /*-{
+	public final native void setPos(double x, double y) /*-{
 		this.Pos.X = x;
 		this.Pos.Y = y;
 	}-*/;
-	public final native void setPos(int x, int y, int z) /*-{
+	public final native void setPosAdd(double x, double y) /*-{
+		this.Pos.X += x;
+		this.Pos.Y += y;
+	}-*/;
+	public final native void setPos(double x, double y, double z) /*-{
 		this.Pos.X = x;
 		this.Pos.Y = y;
 		this.Pos.Z = z;
 	}-*/;
-	public final native void setPosY(int y) /*-{
+	public final native void setPosAdd(double x, double y, double z) /*-{
+		this.Pos.X += x;
+		this.Pos.Y += y;
+		this.Pos.Z += z;
+	}-*/;
+	public final native void setPosY(double y) /*-{
 		this.Pos.Y = y;
 	}-*/;
 	public final native int getPosY() /*-{
@@ -186,7 +195,7 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	 * @param newparent
 	 *            The new parent of the cloned scene node.
 	 */
-	public final native JavaScriptObject createClone(SceneNodeAbs newparent) /*-{
+	public final native SceneNodeAbs createClone(SceneNodeAbs newparent) /*-{
 		return this.createClone(newparent);
 	}-*/;
 
@@ -299,7 +308,7 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	 * independent of whether the scene node is visible or not.
 	 * 
 	 * @param {Scene} the current scene
-	 * @param {Number} time in milliseconds
+	 * @param {int} time in milliseconds
 	 */
 	public final native JavaScriptObject OnAnimate(Scene scene, int current) /*-{
 		return this.OnAnimate(scene, current);
@@ -322,11 +331,11 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	}
 	public final native void setOnRegisterSceneNodeAbs(JsFunction func) /*-{
 		this.OnRegisterSceneNode = function(scene){
-			func.@com.mostka.cl3d.wraper.JsFunction::execute([Lcom/google/gwt/core/client/JavaScriptObject;)(scene)
+			func.@com.mostka.cl3d.wraper.JsFunction::execute(*)(scene)
 		}
 	}-*/;
 	public static final native void OnRegisterSceneNodeAbsCall(SceneNodeAbs sceneNode, Scene scene) /*-{
-		$wnd.CL3D.SceneNode.prototype.OnRegisterSceneNode.call(sceneNode, scene);
+		//$wnd.CL3D.SceneNode.prototype.OnRegisterSceneNode.call(sceneNode, scene);
 	}-*/;
 	
 	/**
@@ -361,7 +370,7 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	
 	public final native void setRenderer(JsFunction func) /*-{
 		this.render = function(renderer){
-			func.@com.mostka.cl3d.wraper.JsFunction::execute([Lcom/google/gwt/core/client/JavaScriptObject;)(renderer);
+			func.@com.mostka.cl3d.wraper.JsFunction::execute(*)(renderer);
 		}
 	}-*/;
 

@@ -2,6 +2,7 @@ package com.mostka.cl3d.wraper;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.mostka.cl3d.wraper.scene.Scene;
+import com.mostka.cl3d.wraper.util.Vect2d;
 import com.mostka.cl3d.wraper.util.Vect3d;
 
 public class CopperLicht extends JavaScriptObject {
@@ -30,7 +31,7 @@ public class CopperLicht extends JavaScriptObject {
 	 *            to appear while the file is being loaded.
 	 */
 
-	public static native CopperLicht create(String elementIdOfCanvas, JavaScriptObject showInfoTexts, Number fps, Boolean showFPSCounter, String loadingScreenText) /*-{
+	public static native CopperLicht create(String elementIdOfCanvas, JavaScriptObject showInfoTexts, int fps, Boolean showFPSCounter, String loadingScreenText) /*-{
 		return new $wnd.CL3D.CopperLicht(elementIdOfCanvas, showInfoTexts, fps,
 				showFPSCounter, loadingScreenText);
 	}-*/;
@@ -75,8 +76,10 @@ public class CopperLicht extends JavaScriptObject {
 	 * manipulate the 3d scene every frame. An example how to use it looks like
 	 * this:
 	 */
-	public final native void setOnAnimate(JavaScriptObject OnAnimate) /*-{
-		this.OnAnimate = OnAnimate;
+	public final native void setOnAnimate(JsFunction OnAnimate) /*-{
+		this.OnAnimate = function(){
+			OnAnimate.@com.mostka.cl3d.wraper.JsFunction::execute(*)()
+		};
 	}-*/;
 
 	/**
@@ -105,7 +108,7 @@ public class CopperLicht extends JavaScriptObject {
 	 */
 	public final native void setOnLoadingComplete(JsFunction func) /*-{
 		this.OnLoadingComplete = function(){
-			func.@com.mostka.cl3d.wraper.JsFunction::execute([Lcom/google/gwt/core/client/JavaScriptObject;)(null);
+			func.@com.mostka.cl3d.wraper.JsFunction::execute(*)(null);
 		}	
 	}-*/;
 
@@ -124,7 +127,7 @@ public class CopperLicht extends JavaScriptObject {
 	 * 
 	 * @param scene
 	 */
-	public final native JavaScriptObject addScene(JavaScriptObject scene) /*-{
+	public final native JavaScriptObject addScene(Scene scene) /*-{
 		return this.addScene(scene);
 	}-*/;
 
@@ -147,7 +150,7 @@ public class CopperLicht extends JavaScriptObject {
 	 * @param pos3d
 	 *            3d position as Vect3d.
 	 */
-	public final native JavaScriptObject get2DPositionFrom3DPosition(Vect3d pos3d) /*-{
+	public final native Vect2d get2DPositionFrom3DPosition(Vect3d pos3d) /*-{
 		return this.get2DPositionFrom3DPosition(pos3d);
 	}-*/;
 
@@ -165,7 +168,7 @@ public class CopperLicht extends JavaScriptObject {
 	 *            y coordinate on the canvas. You can use CopperLicht.getMouseY
 	 *            for the current mouse cursor position.
 	 */
-	public final native JavaScriptObject get3DPositionFrom2DPosition(Number x, Number y) /*-{
+	public final native JavaScriptObject get3DPositionFrom2DPosition(int x, int y) /*-{
 		return this.get3DPositionFrom2DPosition(x, y);
 	}-*/;
 
@@ -282,7 +285,7 @@ public class CopperLicht extends JavaScriptObject {
 	 * 
 	 * @param evt
 	 */
-	public final native JavaScriptObject handleKeyUp(JavaScriptObject evt) /*-{
+	public final native boolean handleKeyUp(Object evt) /*-{
 		return this.handleKeyUp(evt);
 	}-*/;
 

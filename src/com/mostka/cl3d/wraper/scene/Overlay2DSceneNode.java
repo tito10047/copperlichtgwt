@@ -46,7 +46,7 @@ public class Overlay2DSceneNode extends SceneNodeAbs {
 	 * Text alignment to be used. Use 0 for left align, 1 for center and 2 for
 	 * multiline with word wrap.
 	 */
-	public final native Number getTextAlignment() /*-{
+	public final native int getTextAlignment() /*-{
 		return this.TextAlignment;
 	}-*/;
 
@@ -54,7 +54,7 @@ public class Overlay2DSceneNode extends SceneNodeAbs {
 	 * Text alignment to be used. Use 0 for left align, 1 for center and 2 for
 	 * multiline with word wrap.
 	 */
-	public final native void setTextAlignment(Number TextAlignment) /*-{
+	public final native void setTextAlignment(int TextAlignment) /*-{
 		this.TextAlignment = TextAlignment;
 	}-*/;
 
@@ -62,7 +62,7 @@ public class Overlay2DSceneNode extends SceneNodeAbs {
 	 * Text color to be used. Use for example CL3D.createColor(255, 150, 232,
 	 * 249); to create a nice color.
 	 */
-	public final native Number getTextColor() /*-{
+	public final native int getTextColor() /*-{
 		return this.TextColor;
 	}-*/;
 
@@ -70,7 +70,7 @@ public class Overlay2DSceneNode extends SceneNodeAbs {
 	 * Text color to be used. Use for example CL3D.createColor(255, 150, 232,
 	 * 249); to create a nice color.
 	 */
-	public final native void setTextColor(Number TextColor) /*-{
+	public final native void setTextColor(int TextColor) /*-{
 		this.TextColor = TextColor;
 	}-*/;
 
@@ -106,7 +106,7 @@ public class Overlay2DSceneNode extends SceneNodeAbs {
 	 * @param height
 	 *            height of the overlay in pixels
 	 */
-	public final native JavaScriptObject set2DPosition(Number x, Number y, Number width, Number height) /*-{
+	public final native JavaScriptObject set2DPosition(int x, int y, int width, int height) /*-{
 		return this.set2DPosition(x, y, width, height);
 	}-*/;
 
@@ -119,7 +119,7 @@ public class Overlay2DSceneNode extends SceneNodeAbs {
 	 *            a color created with CL3D.createColor defining the color to
 	 *            show
 	 */
-	public final native JavaScriptObject setShowBackgroundColor(Boolean showBackground, Number color) /*-{
+	public final native JavaScriptObject setShowBackgroundColor(Boolean showBackground, int color) /*-{
 		return this.setShowBackgroundColor(showBackground, color);
 	}-*/;
 

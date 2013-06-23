@@ -27,28 +27,28 @@ public class AnimatorCameraFPS extends AnimatorAbs {
 	/**
 	 * Maximal jump speed the user is able to jump with this camera.
 	 */
-	public final native Number getJumpSpeed() /*-{
+	public final native int getJumpSpeed() /*-{
 		return this.JumpSpeed;
 	}-*/;
 
 	/**
 	 * Maximal jump speed the user is able to jump with this camera.
 	 */
-	public final native void setJumpSpeed(Number JumpSpeed) /*-{
+	public final native void setJumpSpeed(int JumpSpeed) /*-{
 		this.JumpSpeed = JumpSpeed;
 	}-*/;
 
 	/**
 	 * Maximal vertical angle the user is able to look.
 	 */
-	public final native Number getMaxVerticalAngle() /*-{
+	public final native int getMaxVerticalAngle() /*-{
 		return this.MaxVerticalAngle;
 	}-*/;
 
 	/**
 	 * Maximal vertical angle the user is able to look.
 	 */
-	public final native void setMaxVerticalAngle(Number MaxVerticalAngle) /*-{
+	public final native void setMaxVerticalAngle(int MaxVerticalAngle) /*-{
 		this.MaxVerticalAngle = MaxVerticalAngle;
 	}-*/;
 
@@ -83,7 +83,7 @@ public class AnimatorCameraFPS extends AnimatorAbs {
 	/**
 	 * Maximal movment speed of the camera.
 	 */
-	public final native Number getMoveSpeed() /*-{
+	public final native int getMoveSpeed() /*-{
 		return this.MoveSpeed;
 	}-*/;
 
@@ -111,7 +111,7 @@ public class AnimatorCameraFPS extends AnimatorAbs {
 	/**
 	 * Maximal rotation speed the user is able to look.
 	 */
-	public final native Number getRotateSpeed() /*-{
+	public final native int getRotateSpeed() /*-{
 		return this.RotateSpeed;
 	}-*/;
 

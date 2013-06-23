@@ -1,7 +1,6 @@
 package com.mostka.cl3d.wraper.scene;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.mostka.cl3d.wraper.util.Mesh;
 
 public class MeshSceneNode extends MeshSceneNodeAbs {
 

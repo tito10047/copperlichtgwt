@@ -47,7 +47,7 @@ public class CL3D extends JavaScriptObject {
 	 * @param b
 	 *            Blue component of the color (value between 0 and 255)
 	 */
-	public static native int createColor(Number a, Number r, Number g, Number b) /*-{
+	public static native int createColor(int a, int r, int g, int b) /*-{
 		return $wnd.CL3D.createColor(a, r, g, b);
 	}-*/;
 
@@ -88,7 +88,7 @@ public class CL3D extends JavaScriptObject {
 	 * @param clr
 	 *            color
 	 */
-	public static native JavaScriptObject getAlpha(Number clr) /*-{
+	public static native JavaScriptObject getAlpha(int clr) /*-{
 		return $wnd.CL3D.getAlpha(clr);
 	}-*/;
 
@@ -99,7 +99,7 @@ public class CL3D extends JavaScriptObject {
 	 * @param clr
 	 *            32 bit color
 	 */
-	public static native JavaScriptObject getBlue(Number clr) /*-{
+	public static native JavaScriptObject getBlue(int clr) /*-{
 		return $wnd.CL3D.getBlue(clr);
 	}-*/;
 
@@ -110,7 +110,7 @@ public class CL3D extends JavaScriptObject {
 	 * @param clr
 	 *            color
 	 */
-	public static native JavaScriptObject getGreen(Number clr) /*-{
+	public static native JavaScriptObject getGreen(int clr) /*-{
 		return $wnd.CL3D.getGreen(clr);
 	}-*/;
 
@@ -121,7 +121,7 @@ public class CL3D extends JavaScriptObject {
 	 * @param clr
 	 *            color
 	 */
-	public static native JavaScriptObject getRed(Number clr) /*-{
+	public static native JavaScriptObject getRed(int clr) /*-{
 		return $wnd.CL3D.getRed(clr);
 	}-*/;
 
