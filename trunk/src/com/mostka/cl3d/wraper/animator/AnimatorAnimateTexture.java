@@ -1,6 +1,5 @@
 package com.mostka.cl3d.wraper.animator;
 
-import java.util.ArrayList;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.mostka.cl3d.wraper.Texture;
@@ -23,7 +22,7 @@ public class AnimatorAnimateTexture extends AnimatorAbs {
 	 *            set to true, the animation will only be played once
 	 */
 
-	public static native AnimatorAnimateTexture create(Texture[] textures, Number timeperframe, Boolean donotloop) /*-{
+	public static native AnimatorAnimateTexture create(Texture[] textures, int timeperframe, Boolean donotloop) /*-{
 		return new $wnd.CL3D.AnimatorAnimateTexture(textures, timeperframe,
 				donotloop);
 	}-*/;

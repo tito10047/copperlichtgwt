@@ -1,7 +1,5 @@
 package com.mostka.cl3d.wraper.util;
 
-import java.util.ArrayList;
-
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayNumber;

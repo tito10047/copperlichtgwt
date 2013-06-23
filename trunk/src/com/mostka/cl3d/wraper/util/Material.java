@@ -145,7 +145,7 @@ public class Material extends JavaScriptObject {
 	 * any value of the predefined materials to this type, or even create your
 	 * own material types using Renderer.createMaterialType.
 	 */
-	public final native Number getType() /*-{
+	public final native int getType() /*-{
 		return this.Type;
 	}-*/;
 

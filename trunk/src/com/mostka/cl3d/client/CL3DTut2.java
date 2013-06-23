@@ -21,7 +21,7 @@ public class CL3DTut2 implements EntryPoint {
 		engine = CopperLicht.startCopperLichtFromFile("3darea","images/index.ccbjs");
 		engine.setOnLoadingComplete(new JsFunction() {
 
-			public JavaScriptObject execute(JavaScriptObject... args) {
+			public JavaScriptObject execute(JavaScriptObject args) {
 				Scene scene = engine.getScene();
 				if (scene!=null){
 					// find the cube scene node

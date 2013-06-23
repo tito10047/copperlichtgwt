@@ -67,7 +67,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * If FadeOutAffector is true, this defines the target color of the fade out
 	 * effect.
 	 */
-	public final native Number getFadeOutTime() /*-{
+	public final native int getFadeOutTime() /*-{
 		return this.FadeOutTime;
 	}-*/;
 
@@ -75,7 +75,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * If FadeOutAffector is true, this defines the target color of the fade out
 	 * effect.
 	 */
-	public final native void setFadeOutTime(Number FadeOutTime) /*-{
+	public final native void setFadeOutTime(int FadeOutTime) /*-{
 		this.FadeOutTime = FadeOutTime;
 	}-*/;
 
@@ -99,7 +99,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * If GravityAffector is true, this defines the time in milli seconds after
 	 * the gravity will have affect
 	 */
-	public final native Number getGravityAffectingTime() /*-{
+	public final native int getGravityAffectingTime() /*-{
 		return this.GravityAffectingTime;
 	}-*/;
 
@@ -107,7 +107,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * If GravityAffector is true, this defines the time in milli seconds after
 	 * the gravity will have affect
 	 */
-	public final native void setGravityAffectingTime(Number GravityAffectingTime) /*-{
+	public final native void setGravityAffectingTime(int GravityAffectingTime) /*-{
 		this.GravityAffectingTime = GravityAffectingTime;
 	}-*/;
 
@@ -130,56 +130,56 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	/**
 	 * Maximal amount of degrees the emitting direction is ignored
 	 */
-	public final native Number getMaxAngleDegrees() /*-{
+	public final native int getMaxAngleDegrees() /*-{
 		return this.MaxAngleDegrees;
 	}-*/;
 
 	/**
 	 * Maximal amount of degrees the emitting direction is ignored
 	 */
-	public final native void setMaxAngleDegrees(Number MaxAngleDegrees) /*-{
+	public final native void setMaxAngleDegrees(int MaxAngleDegrees) /*-{
 		this.MaxAngleDegrees = MaxAngleDegrees;
 	}-*/;
 
 	/**
 	 * Maximal life time of a particle in milli seconds
 	 */
-	public final native Number getMaxLifeTime() /*-{
+	public final native int getMaxLifeTime() /*-{
 		return this.MaxLifeTime;
 	}-*/;
 
 	/**
 	 * Maximal life time of a particle in milli seconds
 	 */
-	public final native void setMaxLifeTime(Number MaxLifeTime) /*-{
+	public final native void setMaxLifeTime(int MaxLifeTime) /*-{
 		this.MaxLifeTime = MaxLifeTime;
 	}-*/;
 
 	/**
 	 * Maximal amounts of particles in the system
 	 */
-	public final native Number getMaxParticles() /*-{
+	public final native int getMaxParticles() /*-{
 		return this.MaxParticles;
 	}-*/;
 
 	/**
 	 * Maximal amounts of particles in the system
 	 */
-	public final native void setMaxParticles(Number MaxParticles) /*-{
+	public final native void setMaxParticles(int MaxParticles) /*-{
 		this.MaxParticles = MaxParticles;
 	}-*/;
 
 	/**
 	 * Maximal amounts of particles emitted per second
 	 */
-	public final native Number getMaxParticlesPerSecond() /*-{
+	public final native int getMaxParticlesPerSecond() /*-{
 		return this.MaxParticlesPerSecond;
 	}-*/;
 
 	/**
 	 * Maximal amounts of particles emitted per second
 	 */
-	public final native void setMaxParticlesPerSecond(Number MaxParticlesPerSecond) /*-{
+	public final native void setMaxParticlesPerSecond(int MaxParticlesPerSecond) /*-{
 		this.MaxParticlesPerSecond = MaxParticlesPerSecond;
 	}-*/;
 
@@ -187,7 +187,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * Maximal color of a particle when starting. Set to 0xffffffff to make it
 	 * white.
 	 */
-	public final native Number getMaxStartColor() /*-{
+	public final native int getMaxStartColor() /*-{
 		return this.MaxStartColor;
 	}-*/;
 
@@ -195,63 +195,63 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * Maximal color of a particle when starting. Set to 0xffffffff to make it
 	 * white.
 	 */
-	public final native void setMaxStartColor(Number MaxStartColor) /*-{
+	public final native void setMaxStartColor(int MaxStartColor) /*-{
 		this.MaxStartColor = MaxStartColor;
 	}-*/;
 
 	/**
 	 * Maximal width of a particle when starting
 	 */
-	public final native Number getMaxStartSizeX() /*-{
+	public final native int getMaxStartSizeX() /*-{
 		return this.MaxStartSizeX;
 	}-*/;
 
 	/**
 	 * Maximal width of a particle when starting
 	 */
-	public final native void setMaxStartSizeX(Number MaxStartSizeX) /*-{
+	public final native void setMaxStartSizeX(int MaxStartSizeX) /*-{
 		this.MaxStartSizeX = MaxStartSizeX;
 	}-*/;
 
 	/**
 	 * Maximal height of a particle when starting
 	 */
-	public final native Number getMaxStartSizeY() /*-{
+	public final native int getMaxStartSizeY() /*-{
 		return this.MaxStartSizeY;
 	}-*/;
 
 	/**
 	 * Maximal height of a particle when starting
 	 */
-	public final native void setMaxStartSizeY(Number MaxStartSizeY) /*-{
+	public final native void setMaxStartSizeY(int MaxStartSizeY) /*-{
 		this.MaxStartSizeY = MaxStartSizeY;
 	}-*/;
 
 	/**
 	 * Minimal life time of a particle in milli seconds
 	 */
-	public final native Number getMinLifeTime() /*-{
+	public final native int getMinLifeTime() /*-{
 		return this.MinLifeTime;
 	}-*/;
 
 	/**
 	 * Minimal life time of a particle in milli seconds
 	 */
-	public final native void setMinLifeTime(Number MinLifeTime) /*-{
+	public final native void setMinLifeTime(int MinLifeTime) /*-{
 		this.MinLifeTime = MinLifeTime;
 	}-*/;
 
 	/**
 	 * Minimal amounts of particles emitted per second
 	 */
-	public final native Number getMinParticlesPerSecond() /*-{
+	public final native int getMinParticlesPerSecond() /*-{
 		return this.MinParticlesPerSecond;
 	}-*/;
 
 	/**
 	 * Minimal amounts of particles emitted per second
 	 */
-	public final native void setMinParticlesPerSecond(Number MinParticlesPerSecond) /*-{
+	public final native void setMinParticlesPerSecond(int MinParticlesPerSecond) /*-{
 		this.MinParticlesPerSecond = MinParticlesPerSecond;
 	}-*/;
 
@@ -259,7 +259,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * Minimal color of a particle when starting. Set to 0xffffffff to make it
 	 * white.
 	 */
-	public final native Number getMinStartColor() /*-{
+	public final native int getMinStartColor() /*-{
 		return this.MinStartColor;
 	}-*/;
 
@@ -267,35 +267,35 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * Minimal color of a particle when starting. Set to 0xffffffff to make it
 	 * white.
 	 */
-	public final native void setMinStartColor(Number MinStartColor) /*-{
+	public final native void setMinStartColor(int MinStartColor) /*-{
 		this.MinStartColor = MinStartColor;
 	}-*/;
 
 	/**
 	 * Minimal width of a particle when starting
 	 */
-	public final native Number getMinStartSizeX() /*-{
+	public final native int getMinStartSizeX() /*-{
 		return this.MinStartSizeX;
 	}-*/;
 
 	/**
 	 * Minimal width of a particle when starting
 	 */
-	public final native void setMinStartSizeX(Number MinStartSizeX) /*-{
+	public final native void setMinStartSizeX(int MinStartSizeX) /*-{
 		this.MinStartSizeX = MinStartSizeX;
 	}-*/;
 
 	/**
 	 * Minimal height of a particle when starting
 	 */
-	public final native Number getMinStartSizeY() /*-{
+	public final native int getMinStartSizeY() /*-{
 		return this.MinStartSizeY;
 	}-*/;
 
 	/**
 	 * Minimal height of a particle when starting
 	 */
-	public final native void setMinStartSizeY(Number MinStartSizeY) /*-{
+	public final native void setMinStartSizeY(int MinStartSizeY) /*-{
 		this.MinStartSizeY = MinStartSizeY;
 	}-*/;
 
@@ -318,28 +318,28 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	/**
 	 * If ScaleAffector is true, this defines the target scale X value.
 	 */
-	public final native Number getScaleToX() /*-{
+	public final native int getScaleToX() /*-{
 		return this.ScaleToX;
 	}-*/;
 
 	/**
 	 * If ScaleAffector is true, this defines the target scale X value.
 	 */
-	public final native void setScaleToX(Number ScaleToX) /*-{
+	public final native void setScaleToX(int ScaleToX) /*-{
 		this.ScaleToX = ScaleToX;
 	}-*/;
 
 	/**
 	 * If ScaleAffector is true, this defines the target scale Y value.
 	 */
-	public final native Number getScaleToY() /*-{
+	public final native int getScaleToY() /*-{
 		return this.ScaleToY;
 	}-*/;
 
 	/**
 	 * If ScaleAffector is true, this defines the target scale Y value.
 	 */
-	public final native void setScaleToY(Number ScaleToY) /*-{
+	public final native void setScaleToY(int ScaleToY) /*-{
 		this.ScaleToY = ScaleToY;
 	}-*/;
 

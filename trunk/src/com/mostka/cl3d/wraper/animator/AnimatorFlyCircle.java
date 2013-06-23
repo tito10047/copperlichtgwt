@@ -15,7 +15,7 @@ public class AnimatorFlyCircle extends AnimatorAbs {
 	 * @param speedmovement speed, for example 0.01
 	 */
 
-	public static native AnimatorFlyCircle create(Vect3d center, Number radius, Vect3d direction, Number speed) /*-{
+	public static native AnimatorFlyCircle create(Vect3d center, int radius, Vect3d direction, int speed) /*-{
 			return new $wnd.CL3D.AnimatorFlyCircle(center, radius, direction, speed);
 	}-*/;
 

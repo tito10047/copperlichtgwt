@@ -20,14 +20,14 @@ public class Light extends JavaScriptObject {
 	/**
 	 * Attenuation of the light. Default is 1 / 100.
 	 */
-	public final native Number getAttenuation() /*-{
+	public final native int getAttenuation() /*-{
 		return this.Attenuation;
 	}-*/;
 
 	/**
 	 * Attenuation of the light. Default is 1 / 100.
 	 */
-	public final native void setAttenuation(Number Attenuation) /*-{
+	public final native void setAttenuation(int Attenuation) /*-{
 		this.Attenuation = Attenuation;
 	}-*/;
 
@@ -62,14 +62,14 @@ public class Light extends JavaScriptObject {
 	/**
 	 * Radius of the light. Currently ignored.
 	 */
-	public final native Number getRadius() /*-{
+	public final native int getRadius() /*-{
 		return this.Radius;
 	}-*/;
 
 	/**
 	 * Radius of the light. Currently ignored.
 	 */
-	public final native void setRadius(Number Radius) /*-{
+	public final native void setRadius(int Radius) /*-{
 		this.Radius = Radius;
 	}-*/;
 

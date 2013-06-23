@@ -24,7 +24,7 @@ public class CL3DTut6 implements EntryPoint {
 		engine = CopperLicht.startCopperLichtFromFile("3darea","images/copperlichtdata/room.ccbjs");
 		engine.setOnLoadingComplete(new JsFunction() {
 
-			public JavaScriptObject execute(JavaScriptObject... args) {
+			public JavaScriptObject execute(JavaScriptObject args) {
 				Scene scene = engine.getScene();
 				if (scene==null){
 					Window.alert("some problem");
@@ -39,7 +39,7 @@ public class CL3DTut6 implements EntryPoint {
 				// ensure to place the camera inside the room, or it will fall out, into the endless void
 				
 				cam.setPos(-50, 180, 20);
-				CL3DWraper.log(cam);
+				CL3DTut3.log(cam);
 				// add an animator which makes the camera move by keyboard and mouse input
 				
 				AnimatorCameraFPS animator = AnimatorCameraFPS.create(cam, engine);	
@@ -78,7 +78,6 @@ public class CL3DTut6 implements EntryPoint {
 			return;
 		}
 		if (key == 32){ // space has been pressed
-			
 			CameraSceneNode cam = scene.getActiveCamera();
 			
 			// calculate the start and end 3d point of the line, the beinning being
@@ -97,7 +96,7 @@ public class CL3DTut6 implements EntryPoint {
 				// a collision has been found.
 				// create a cube at the point where the collision happened
 				
-				if (cubeCollisionPosition!=null)
+				if (cubeCollisionPosition==null)
 				{
 					cubeCollisionPosition = CubeSceneNode.create();
 					scene.getRootSceneNode().addChild(cubeCollisionPosition);

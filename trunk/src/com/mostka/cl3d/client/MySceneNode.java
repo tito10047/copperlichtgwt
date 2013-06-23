@@ -1,9 +1,7 @@
 package com.mostka.cl3d.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayNumber;
-import com.google.gwt.user.client.Window;
 import com.mostka.cl3d.wraper.CopperLicht;
 import com.mostka.cl3d.wraper.JsFunction;
 import com.mostka.cl3d.wraper.Renderer;
@@ -16,7 +14,7 @@ import com.mostka.cl3d.wraper.util.Vertex3D;
 
 public class MySceneNode{
 
-	public static Mesh myMesh;
+	public Mesh myMesh;
 	public SceneNode sceneNode;
 	private MeshBuffer buf;
 
@@ -42,24 +40,12 @@ public class MySceneNode{
 		buf.getVertices().push(createVertex( 10,0, -10,   1, 0));
 		buf.getVertices().push(createVertex( 0, 20, 0,    0, 1));
 		buf.getVertices().push(createVertex(-10,20,-10,   1, 1));
-		CL3DWraper.log(buf);
+		CL3DTut3.log(buf);
 		// set the texture of the material
 		
 		buf.getMat().setTex1( engine.getTextureManager().getTexture("images/test.jpg", true));
-		
-		export();
-	}
-	public static void setMesh(Mesh m){
-		myMesh= m;
-	}
-	
-	//@com.google.gwt.examples.JSNIExample::staticFoo(Ljava/lang/String;)(s);
 
-	public static native void export() /*-{
-		$wnd.testtt = function(mesh){
-			@com.mostka.cl3d.client.MySceneNode::setMesh(*)(mesh);
-		}
-	}-*/;
+	}
 	
 	public SceneNode getSceneNode(){
 		return sceneNode;
@@ -67,8 +53,8 @@ public class MySceneNode{
 	
 	public JsFunction onRegisterSceneNodeAbs = new JsFunction() {
 		@Override
-		public JavaScriptObject execute(JavaScriptObject... args) {
-			Scene scene = (Scene) args[0];
+		public JavaScriptObject execute(JavaScriptObject args) {
+			Scene scene = (Scene) args;
 			scene.registerNodeForRendering(sceneNode, Scene.RENDER_MODE_DEFAULT);
 			SceneNodeAbs.OnRegisterSceneNodeAbsCall(sceneNode, scene);
 			return null;
@@ -76,8 +62,8 @@ public class MySceneNode{
 	};
 	
 	private JsFunction render = new JsFunction() {
-		public JavaScriptObject execute(JavaScriptObject... args) {
-			Renderer renderer = (Renderer) args[0];
+		public JavaScriptObject execute(JavaScriptObject args) {
+			Renderer renderer = (Renderer) args;
 			renderer.setWorld(sceneNode.getAbsoluteTransformation());
 			renderer.drawMesh(myMesh);
 			return null;

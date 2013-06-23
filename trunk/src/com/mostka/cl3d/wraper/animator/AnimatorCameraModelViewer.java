@@ -35,28 +35,28 @@ public class AnimatorCameraModelViewer extends AnimatorAbs {
 	/**
 	 * Radius of the camera
 	 */
-	public final native Number getRadius() /*-{
+	public final native int getRadius() /*-{
 		return this.Radius;
 	}-*/;
 
 	/**
 	 * Radius of the camera
 	 */
-	public final native void setRadius(Number Radius) /*-{
+	public final native void setRadius(int Radius) /*-{
 		this.Radius = Radius;
 	}-*/;
 
 	/**
 	 * Rotation speed of the camera
 	 */
-	public final native Number getRotateSpeed() /*-{
+	public final native int getRotateSpeed() /*-{
 		return this.RotateSpeed;
 	}-*/;
 
 	/**
 	 * Rotation speed of the camera
 	 */
-	public final native void setRotateSpeed(Number RotateSpeed) /*-{
+	public final native void setRotateSpeed(int RotateSpeed) /*-{
 		this.RotateSpeed = RotateSpeed;
 	}-*/;
 

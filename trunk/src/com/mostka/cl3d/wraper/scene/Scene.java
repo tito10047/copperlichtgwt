@@ -145,7 +145,7 @@ public class Scene extends JavaScriptObject {
 	 * @param id
 	 *            name of the SceneNode. See SceneNode.getId().
 	 */
-	public final native JavaScriptObject getSceneNodeFromId(Number id) /*-{
+	public final native JavaScriptObject getSceneNodeFromId(int id) /*-{
 		return this.getSceneNodeFromId(id);
 	}-*/;
 
@@ -217,7 +217,7 @@ public class Scene extends JavaScriptObject {
 	 * @param activeCamera
 	 *            The new active camera
 	 */
-	public final native JavaScriptObject setActiveCamera(JavaScriptObject activeCamera) /*-{
+	public final native JavaScriptObject setActiveCamera(CameraSceneNode activeCamera) /*-{
 		return this.setActiveCamera(activeCamera);
 	}-*/;
 

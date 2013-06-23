@@ -18,7 +18,7 @@ public class AnimatorFlyStraight extends AnimatorAbs {
 	 * @param animateCameraTargetInsteadOfPositionif the animated node is a camera, set to true to animate the camera target instead of the position of the camera.
 	 */
 
-	public static native AnimatorFlyStraight create(Vect3d start, Vect3d end, Number timeForWay, Boolean loop, Boolean deleteMeAfterEndReached, Boolean animateCameraTargetInsteadOfPosition) /*-{
+	public static native AnimatorFlyStraight create(Vect3d start, Vect3d end, int timeForWay, Boolean loop, Boolean deleteMeAfterEndReached, Boolean animateCameraTargetInsteadOfPosition) /*-{
 			return new $wnd.CL3D.AnimatorFlyStraight(start, end, timeForWay, loop, deleteMeAfterEndReached, animateCameraTargetInsteadOfPosition);
 	}-*/;
 

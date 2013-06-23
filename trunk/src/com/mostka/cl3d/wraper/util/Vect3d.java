@@ -32,7 +32,7 @@ public class Vect3d extends JavaScriptObject {
 	/**
 	 * X coordinate of the vector
 	 */
-	public final native void setX(Number X) /*-{
+	public final native void setX(int X) /*-{
 		this.X = X;
 	}-*/;
 
@@ -46,21 +46,21 @@ public class Vect3d extends JavaScriptObject {
 	/**
 	 * Y coordinate of the vector
 	 */
-	public final native void setY(Number Y) /*-{
+	public final native void setY(int Y) /*-{
 		this.Y = Y;
 	}-*/;
 
 	/**
 	 * Z coordinate of the vector
 	 */
-	public final native Number getZ() /*-{
+	public final native int getZ() /*-{
 		return this.Z;
 	}-*/;
 
 	/**
 	 * Z coordinate of the vector
 	 */
-	public final native void setZ(Number Z) /*-{
+	public final native void setZ(int Z) /*-{
 		this.Z = Z;
 	}-*/;
 
@@ -159,8 +159,8 @@ public class Vect3d extends JavaScriptObject {
 	 * @param y
 	 * @param z
 	 */
-	public final native JavaScriptObject equalsByNumbers(JavaScriptObject x, JavaScriptObject y, JavaScriptObject z) /*-{
-		return this.equalsByNumbers(x, y, z);
+	public final native JavaScriptObject equalsByints(JavaScriptObject x, JavaScriptObject y, JavaScriptObject z) /*-{
+		return this.equalsByints(x, y, z);
 	}-*/;
 
 	/**
@@ -211,7 +211,7 @@ public class Vect3d extends JavaScriptObject {
 	 * @param d
 	 *            value between 0 and 1, specifying the interpolation
 	 */
-	public final native JavaScriptObject getInterpolated(Vect3d other, Number d) /*-{
+	public final native JavaScriptObject getInterpolated(Vect3d other, int d) /*-{
 		return this.getInterpolated(other, d);
 	}-*/;
 
@@ -246,7 +246,7 @@ public class Vect3d extends JavaScriptObject {
 	}-*/;
 
 	/**
-	 * Multiplies this vector with a scalar value (= a number), modifying this
+	 * Multiplies this vector with a scalar value (= a int), modifying this
 	 * vector
 	 * 
 	 * @param v
@@ -266,7 +266,7 @@ public class Vect3d extends JavaScriptObject {
 	}-*/;
 
 	/**
-	 * Multiplies this vector with a scalar value (= a number) and returns the
+	 * Multiplies this vector with a scalar value (= a int) and returns the
 	 * result as a new vector
 	 * 
 	 * @param v
