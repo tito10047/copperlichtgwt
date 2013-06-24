@@ -1,6 +1,7 @@
 package com.mostka.cl3d.wraper;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.mostka.cl3d.wraper.util.WebGlTexture;
 
 public class Texture extends JavaScriptObject {
 
@@ -40,7 +41,7 @@ public class Texture extends JavaScriptObject {
 	 * returns the webGL texture object of the texture, only available if the
 	 * texture has been loaded already.
 	 */
-	public final native JavaScriptObject getWebGLTexture() /*-{
+	public final native WebGlTexture getWebGLTexture() /*-{
 		return this.getWebGLTexture();
 	}-*/;
 

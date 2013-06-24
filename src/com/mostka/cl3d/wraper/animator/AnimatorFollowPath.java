@@ -2,10 +2,22 @@ package com.mostka.cl3d.wraper.animator;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.mostka.cl3d.wraper.scene.PathSceneNode;
+import com.mostka.cl3d.wraper.scene.Scene;
 
 
 public class AnimatorFollowPath extends AnimatorAbs {
 
+
+	/**
+	 * Constant for AnimatorFollowPath.EndMode, specifying to start the movement again when the end of the path has been reached.
+	 */
+	public static int EFPFEM_START_AGAIN = 0;
+	/**
+	 * Constant for AnimatorFollowPath.EndMode, specifying to start the movement again when the end of the path has been reached.
+	 */
+	public static int EFPFEM_STOP = 1;
+	public static int EFPFEM_SWITCH_TO_CAMERA = 2;
+	
 	protected AnimatorFollowPath(){}
 
 	/**
@@ -13,23 +25,10 @@ public class AnimatorFollowPath extends AnimatorAbs {
 	 * @param sceneThe scene the animator is in
 	 */
 
-	public static native AnimatorFollowPath create(JavaScriptObject scene) /*-{
+	public static native AnimatorFollowPath create(Scene scene) /*-{
 		return new $wnd.CL3D.AnimatorFollowPath(scene);
 	}-*/;
 
-	/**
-	 * Constant for AnimatorFollowPath.EndMode, specifying to start the movement again when the end of the path has been reached.
-	 */
-	public static native AnimatorFollowPath getEFPFEM_START_AGAIN() /*-{
-		return AnimatorFollowPath.EFPFEM_START_AGAIN;
-	}-*/;
-
-	/**
-	 * Constant for AnimatorFollowPath.EndMode, specifying to start the movement again when the end of the path has been reached.
-	 */
-	public static native AnimatorFollowPath getEFPFEM_STOP() /*-{
-		return AnimatorFollowPath.EFPFEM_STOP;
-	}-*/;
 
 	/**
 	 * Animates the scene node it is attached to and returns true if scene node was modified.
@@ -56,7 +55,7 @@ Can be
 	 * @param lookIntoMovementDirection true if the node should look into the movement direction or false 
 if not.
 	 */
-	public final native JavaScriptObject setOptions(int endmode, int timeNeeded, Boolean lookIntoMovementDirection) /*-{
+	public final native JavaScriptObject setOptions(int endmode, int timeNeeded, boolean lookIntoMovementDirection) /*-{
 		return this.setOptions(endmode, timeNeeded, lookIntoMovementDirection);
 	}-*/;
 
