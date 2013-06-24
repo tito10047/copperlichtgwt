@@ -1,0 +1,35 @@
+.mainCentered{
+	width:840px; 
+	height:600px; 
+	position: fixed; 
+	top:50%;
+	left: 50%;
+	/* margin-top and margin-left should be managed dinamically
+	  if width and height can change*/
+	margin-top: -300px;
+	margin-left: -420px;
+}
+
+.interaction{
+	font-weight: bold;
+	cursor: pointer;
+	position: absolute;
+	height:30px; 
+	border-radius:5px; 
+	border:1px solid #777777;
+	opacity:0.8;
+}
+
+#textInfoInteraction{
+	position: absolute;
+	width: 818px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 20%;
+	bottom: 0;
+	border:1px solid #777777;
+	background-color: #FFFFFF;
+	opacity:0.8;
+}

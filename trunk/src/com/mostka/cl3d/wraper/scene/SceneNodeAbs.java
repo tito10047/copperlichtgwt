@@ -1,9 +1,9 @@
 package com.mostka.cl3d.wraper.scene;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.mostka.cl3d.wraper.JsFunction;
 import com.mostka.cl3d.wraper.Renderer;
-import com.mostka.cl3d.wraper.animator.Animator;
 import com.mostka.cl3d.wraper.animator.AnimatorAbs;
 import com.mostka.cl3d.wraper.selector.TriangleSelector;
 import com.mostka.cl3d.wraper.util.Material;
@@ -177,6 +177,10 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	public final native JavaScriptObject addAnimator(AnimatorAbs a) /*-{
 		return this.addAnimator(a);
 	}-*/;
+	public final native JavaScriptObject addAnimator(SceneNodeAbs a) /*-{
+		return this.addAnimator(a);
+	}-*/;
+
 
 	/**
 	 * Adds a child to this scene node. If the scene node already has a parent
@@ -236,7 +240,7 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	/**
 	 * Returns an array of Animators which are animating this scene node.
 	 */
-	public final native JavaScriptObject getAnimators() /*-{
+	public final native JsArray<CameraSceneNode> getAnimators() /*-{
 		return this.getAnimators();
 	}-*/;
 
@@ -344,7 +348,7 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	 * @param a
 	 *            the new $wnd.CL3D.Animator to remove.
 	 */
-	public final native JavaScriptObject removeAnimator(Animator a) /*-{
+	public final native JavaScriptObject removeAnimator(SceneNodeAbs a) /*-{
 		return this.removeAnimator(a);
 	}-*/;
 
