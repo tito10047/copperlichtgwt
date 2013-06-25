@@ -84,6 +84,9 @@ public class MeshBuffer extends JavaScriptObject {
 	public final native JsArray<Vertex3D> getVertices() /*-{
 		return this.Vertices;
 	}-*/;
+	public final native int getVerticesLength() /*-{
+		return this.Vertices.length;
+	}-*/;
 
 	/**
 	 * Array of Vertices of this mesh buffer. The members of this array must all

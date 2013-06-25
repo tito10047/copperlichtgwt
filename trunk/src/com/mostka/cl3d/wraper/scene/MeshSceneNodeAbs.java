@@ -31,7 +31,7 @@ public abstract class MeshSceneNodeAbs extends SceneNodeAbs {
 	/**
 	 * Returns the Mesh drawn by this scene node.
 	 */
-	public final native JavaScriptObject getMesh() /*-{
+	public final native Mesh getMesh() /*-{
 		return this.getMesh();
 	}-*/;
 	

@@ -31,6 +31,10 @@ public class Renderer extends JavaScriptObject {
 	public final native JavaScriptObject getOnChangeMaterial() /*-{
 		return this.OnChangeMaterial;
 	}-*/;
+	
+	public final native JavaScriptObject updateRendererNativeArray(MeshBuffer buff) /*-{
+		return this.updateRendererNativeArray(buff);
+	}-*/;
 
 	/**
 	 * Event handler called after the renderer switches to a specific material,
@@ -177,7 +181,7 @@ public class Renderer extends JavaScriptObject {
 	 *            the mesh buffer to draw.
 	 * @param indexCountToUse
 	 */
-	public final native JavaScriptObject drawMeshBuffer(MeshBuffer buf, JavaScriptObject indexCountToUse) /*-{
+	public final native JavaScriptObject drawMeshBuffer(MeshBuffer buf, int indexCountToUse) /*-{
 		return this.drawMeshBuffer(buf, indexCountToUse);
 	}-*/;
 

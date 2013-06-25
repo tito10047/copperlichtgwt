@@ -6,6 +6,7 @@ import com.mostka.cl3d.wraper.JsFunction;
 import com.mostka.cl3d.wraper.Renderer;
 import com.mostka.cl3d.wraper.animator.AnimatorAbs;
 import com.mostka.cl3d.wraper.selector.TriangleSelector;
+import com.mostka.cl3d.wraper.selector.TriangleSelectorInt;
 import com.mostka.cl3d.wraper.util.Material;
 import com.mostka.cl3d.wraper.util.Matrix4;
 import com.mostka.cl3d.wraper.util.Vect3d;
@@ -137,7 +138,7 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	 * An optional TriangleSelector, giving access to the collision geometry of
 	 * this scene node.
 	 */
-	public final native TriangleSelector getSelector() /*-{
+	public final native TriangleSelectorInt getSelector() /*-{
 		return this.Selector;
 	}-*/;
 
@@ -145,7 +146,7 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	 * An optional TriangleSelector, giving access to the collision geometry of
 	 * this scene node.
 	 */
-	public final native void setSelector(TriangleSelector Selector) /*-{
+	public final native void setSelector(TriangleSelectorInt Selector) /*-{
 		this.Selector = Selector;
 	}-*/;
 

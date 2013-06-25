@@ -1,6 +1,7 @@
 package com.mostka.cl3d.wraper.util;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 public class Mesh extends JavaScriptObject {
 
@@ -34,7 +35,7 @@ public class Mesh extends JavaScriptObject {
 	/**
 	 * Returns an Array of all MeshBuffers in this mesh.
 	 */
-	public final native JavaScriptObject GetMeshBuffers() /*-{
+	public final native JsArray<MeshBuffer> GetMeshBuffers() /*-{
 		return this.GetMeshBuffers();
 	}-*/;
 

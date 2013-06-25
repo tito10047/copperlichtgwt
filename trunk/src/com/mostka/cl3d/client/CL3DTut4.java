@@ -23,7 +23,7 @@ public class CL3DTut4 implements EntryPoint {
 	private Scene scene;
 	public void onModuleLoad() {
 		// create the 3d engine
-engine = CopperLicht.create("3darea");
+		engine = CopperLicht.create("3darea");
 		
 		if (!engine.initRenderer()){
 			Window.alert("this browser doesn't support WebGL");

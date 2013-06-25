@@ -1,6 +1,7 @@
 package com.mostka.cl3d.wraper.selector;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.mostka.cl3d.wraper.scene.SceneNode;
 import com.mostka.cl3d.wraper.util.Box3d;
 import com.mostka.cl3d.wraper.util.Matrix4;
@@ -36,7 +37,7 @@ public class OctTreeTriangleSelector extends JavaScriptObject implements Triangl
 	 * @param outArray
 	 *            output array of the triangles
 	 */
-	public final native JavaScriptObject getAllTriangles(Matrix4 transform, Triangle3d[] outArray) /*-{
+	public final native JavaScriptObject getAllTriangles(Matrix4 transform, JsArray<Triangle3d> outArray) /*-{
 		return this.getAllTriangles(transform, outArray);
 	}-*/;
 
