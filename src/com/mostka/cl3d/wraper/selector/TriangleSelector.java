@@ -6,7 +6,7 @@ import com.mostka.cl3d.wraper.util.Matrix4;
 import com.mostka.cl3d.wraper.util.Triangle3d;
 import com.mostka.cl3d.wraper.util.Vect3d;
 
-public class TriangleSelector extends JavaScriptObject /*implements TriangleSelectorInt*/ {
+public class TriangleSelector extends JavaScriptObject implements TriangleSelectorInt {
 
 	protected TriangleSelector() {
 	}

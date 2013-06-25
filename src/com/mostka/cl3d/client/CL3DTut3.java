@@ -30,8 +30,13 @@ public class CL3DTut3 implements EntryPoint {
 		$wnd.debugGWT[name]=obj
 	}-*/;
 	public static native void log(Object obj) /*-{
+		$wnd.temp = obj;
 		console.log(obj)
 	}-*/;
+	public static native void log(int obj) /*-{
+	$wnd.temp = obj;
+	console.log(obj)
+}-*/;
 	
 	public void onModuleLoad() {
 		engine = CopperLicht.create("3darea");

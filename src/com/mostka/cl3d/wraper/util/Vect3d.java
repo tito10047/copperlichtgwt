@@ -39,7 +39,7 @@ public class Vect3d extends JavaScriptObject {
 	/**
 	 * Y coordinate of the vector
 	 */
-	public final native int getY() /*-{
+	public final native double getY() /*-{
 		return this.Y;
 	}-*/;
 
@@ -53,7 +53,7 @@ public class Vect3d extends JavaScriptObject {
 	/**
 	 * Z coordinate of the vector
 	 */
-	public final native int getZ() /*-{
+	public final native double getZ() /*-{
 		return this.Z;
 	}-*/;
 
@@ -147,7 +147,7 @@ public class Vect3d extends JavaScriptObject {
 	 * @param other
 	 *            other vector
 	 */
-	public final native JavaScriptObject equals(Vect3d other) /*-{
+	public final native boolean equals(Vect3d other) /*-{
 		return this.equals(other);
 	}-*/;
 
