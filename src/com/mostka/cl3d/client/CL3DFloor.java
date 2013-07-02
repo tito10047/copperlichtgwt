@@ -8,7 +8,6 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.mostka.cl3d.wraper.CL3D;
@@ -183,3 +182,4 @@ public class CL3DFloor implements EntryPoint {
 		}
 	}-*/;
 }
+
