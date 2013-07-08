@@ -155,7 +155,7 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	 * visible). This is only an option set by the user, but has nothing to do
 	 * with geometry culling.
 	 */
-	public final native Boolean getVisible() /*-{
+	public final native boolean getVisible() /*-{
 		return this.Visible;
 	}-*/;
 
@@ -164,7 +164,7 @@ public abstract class SceneNodeAbs extends JavaScriptObject/* implements SceneNo
 	 * visible). This is only an option set by the user, but has nothing to do
 	 * with geometry culling.
 	 */
-	public final native void setVisible(Boolean Visible) /*-{
+	public final native void setVisible(boolean Visible) /*-{
 		this.Visible = Visible;
 	}-*/;
 

@@ -70,7 +70,7 @@ public class Material extends JavaScriptObject {
 	 * Specifies if backface culling is enabled for the material. Default is
 	 * true.
 	 */
-	public final native Boolean getBackfaceCulling() /*-{
+	public final native boolean getBackfaceCulling() /*-{
 		return this.BackfaceCulling;
 	}-*/;
 
@@ -78,7 +78,7 @@ public class Material extends JavaScriptObject {
 	 * Specifies if backface culling is enabled for the material. Default is
 	 * true.
 	 */
-	public final native void setBackfaceCulling(Boolean BackfaceCulling) /*-{
+	public final native void setBackfaceCulling(boolean BackfaceCulling) /*-{
 		this.BackfaceCulling = BackfaceCulling;
 	}-*/;
 
@@ -86,7 +86,7 @@ public class Material extends JavaScriptObject {
 	 * Specifies if the texture wrapping is enabled or not for Texture 1. In
 	 * OpenGL terms, this simply sets TEXTURE_WRAP to REPEAT or CLAMP_TO_EDGE
 	 */
-	public final native Boolean getClampTexture1() /*-{
+	public final native boolean getClampTexture1() /*-{
 		return this.ClampTexture1;
 	}-*/;
 
@@ -94,21 +94,21 @@ public class Material extends JavaScriptObject {
 	 * Specifies if the texture wrapping is enabled or not for Texture 1. In
 	 * OpenGL terms, this simply sets TEXTURE_WRAP to REPEAT or CLAMP_TO_EDGE
 	 */
-	public final native void setClampTexture1(Boolean ClampTexture1) /*-{
+	public final native void setClampTexture1(boolean ClampTexture1) /*-{
 		this.ClampTexture1 = ClampTexture1;
 	}-*/;
 	
 	/**
 	 * Specifies if lighting is enabled for the material. Default is false.
 	 */
-	public final native Boolean getLighting() /*-{
+	public final native boolean getLighting() /*-{
 		return this.Lighting;
 	}-*/;
 
 	/**
 	 * Specifies if lighting is enabled for the material. Default is false.
 	 */
-	public final native void setLighting(Boolean Lighting) /*-{
+	public final native void setLighting(boolean Lighting) /*-{
 		this.Lighting = Lighting;
 	}-*/;
 
@@ -161,28 +161,28 @@ public class Material extends JavaScriptObject {
 	/**
 	 * Specifies if the material is allowed to read from the ZBuffer (DepthTest)
 	 */
-	public final native Boolean getZReadEnabled() /*-{
+	public final native boolean getZReadEnabled() /*-{
 		return this.ZReadEnabled;
 	}-*/;
 
 	/**
 	 * Specifies if the material is allowed to read from the ZBuffer (DepthTest)
 	 */
-	public final native void setZReadEnabled(Boolean ZReadEnabled) /*-{
+	public final native void setZReadEnabled(boolean ZReadEnabled) /*-{
 		this.ZReadEnabled = ZReadEnabled;
 	}-*/;
 
 	/**
 	 * Specifies if the material is allowed to write into the ZBuffer
 	 */
-	public final native Boolean getZWriteEnabled() /*-{
+	public final native boolean getZWriteEnabled() /*-{
 		return this.ZWriteEnabled;
 	}-*/;
 
 	/**
 	 * Specifies if the material is allowed to write into the ZBuffer
 	 */
-	public final native void setZWriteEnabled(Boolean ZWriteEnabled) /*-{
+	public final native void setZWriteEnabled(boolean ZWriteEnabled) /*-{
 		this.ZWriteEnabled = ZWriteEnabled;
 	}-*/;
 

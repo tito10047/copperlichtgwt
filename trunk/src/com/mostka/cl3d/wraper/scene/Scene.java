@@ -236,7 +236,7 @@ public class Scene extends JavaScriptObject {
 	 * 
 	 * @param name
 	 */
-	public final native JavaScriptObject setName(JavaScriptObject name) /*-{
+	public final native JavaScriptObject setName(String name) /*-{
 		return this.setName(name);
 	}-*/;
 

@@ -51,7 +51,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * Setting if the fade out affector is active, i.e. if particles should be
 	 * faded out at the end of their lifetime
 	 */
-	public final native Boolean getFadeOutAffector() /*-{
+	public final native boolean getFadeOutAffector() /*-{
 		return this.FadeOutAffector;
 	}-*/;
 
@@ -59,7 +59,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * Setting if the fade out affector is active, i.e. if particles should be
 	 * faded out at the end of their lifetime
 	 */
-	public final native void setFadeOutAffector(Boolean FadeOutAffector) /*-{
+	public final native void setFadeOutAffector(boolean FadeOutAffector) /*-{
 		this.FadeOutAffector = FadeOutAffector;
 	}-*/;
 
@@ -115,7 +115,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * Setting if the gravity affector is active, i.e. if should be affected by
 	 * gravity during their lifetime.
 	 */
-	public final native Boolean getGravityAffector() /*-{
+	public final native boolean getGravityAffector() /*-{
 		return this.GravityAffector;
 	}-*/;
 
@@ -123,7 +123,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * Setting if the gravity affector is active, i.e. if should be affected by
 	 * gravity during their lifetime.
 	 */
-	public final native void setGravityAffector(Boolean GravityAffector) /*-{
+	public final native void setGravityAffector(boolean GravityAffector) /*-{
 		this.GravityAffector = GravityAffector;
 	}-*/;
 
@@ -303,7 +303,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * Setting if the scale affector is active, i.e. if should be scaled their
 	 * lifetime.
 	 */
-	public final native Boolean getScaleAffector() /*-{
+	public final native boolean getScaleAffector() /*-{
 		return this.ScaleAffector;
 	}-*/;
 
@@ -311,7 +311,7 @@ public class ParticleSystemSceneNode extends SceneNodeAbs {
 	 * Setting if the scale affector is active, i.e. if should be scaled their
 	 * lifetime.
 	 */
-	public final native void setScaleAffector(Boolean ScaleAffector) /*-{
+	public final native void setScaleAffector(boolean ScaleAffector) /*-{
 		this.ScaleAffector = ScaleAffector;
 	}-*/;
 

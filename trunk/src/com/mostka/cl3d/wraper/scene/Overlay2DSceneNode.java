@@ -119,7 +119,7 @@ public class Overlay2DSceneNode extends SceneNodeAbs {
 	 *            a color created with CL3D.createColor defining the color to
 	 *            show
 	 */
-	public final native JavaScriptObject setShowBackgroundColor(Boolean showBackground, int color) /*-{
+	public final native JavaScriptObject setShowBackgroundColor(boolean showBackground, int color) /*-{
 		return this.setShowBackgroundColor(showBackground, color);
 	}-*/;
 

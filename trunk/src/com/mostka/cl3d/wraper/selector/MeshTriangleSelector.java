@@ -78,7 +78,7 @@ public class MeshTriangleSelector extends JavaScriptObject implements TriangleSe
 	 * @param ignoreInvisibleItems
 	 *            set to true to ignore invisible scene nodes for collision test
 	 */
-	public final native JavaScriptObject getCollisionPointWithLine(Vect3d start, Vect3d end, Boolean bIgnoreBackFaces, Triangle3d outTriangle, Boolean ignoreInvisibleItems) /*-{
+	public final native JavaScriptObject getCollisionPointWithLine(Vect3d start, Vect3d end, boolean bIgnoreBackFaces, Triangle3d outTriangle, boolean ignoreInvisibleItems) /*-{
 		return this.getCollisionPointWithLine(start, end, bIgnoreBackFaces,
 				outTriangle, ignoreInvisibleItems);
 	}-*/;

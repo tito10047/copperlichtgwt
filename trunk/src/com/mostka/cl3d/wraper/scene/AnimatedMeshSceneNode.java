@@ -115,7 +115,7 @@ public class AnimatedMeshSceneNode extends SceneNodeAbs {
 	 * @param loop
 	 *            true to loop, false if not
 	 */
-	public final native JavaScriptObject setLoopMode(Boolean loop) /*-{
+	public final native JavaScriptObject setLoopMode(boolean loop) /*-{
 		return this.setLoopMode(loop);
 	}-*/;
 

@@ -17,7 +17,7 @@ public class AnimatorOnClick extends AnimatorAbs {
 	 * @param register(optional) set to true to prevent registering at the scene using registerSceneNodeAnimatorForEvents
 	 */
 
-	public static native AnimatorOnClick create(Scene scene, CopperLicht engine, JavaScriptObject functionToCall, Boolean register) /*-{
+	public static native AnimatorOnClick create(Scene scene, CopperLicht engine, JavaScriptObject functionToCall, boolean register) /*-{
 			return new $wnd.CL3D.AnimatorOnClick(scene, engine, functionToCall, register);
 	}-*/;
 

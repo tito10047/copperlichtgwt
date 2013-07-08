@@ -21,14 +21,14 @@ public class AnimatorCameraModelViewer extends AnimatorAbs {
 	/**
 	 * Defines if the animator may only move the camera horizontally
 	 */
-	public final native Boolean getNoVerticalMovement() /*-{
+	public final native boolean getNoVerticalMovement() /*-{
 		return this.NoVerticalMovement;
 	}-*/;
 
 	/**
 	 * Defines if the animator may only move the camera horizontally
 	 */
-	public final native void setNoVerticalMovement(Boolean NoVerticalMovement) /*-{
+	public final native void setNoVerticalMovement(boolean NoVerticalMovement) /*-{
 		this.NoVerticalMovement = NoVerticalMovement;
 	}-*/;
 

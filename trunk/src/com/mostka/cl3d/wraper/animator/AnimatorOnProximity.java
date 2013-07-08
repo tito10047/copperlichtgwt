@@ -17,7 +17,7 @@ public class AnimatorOnProximity extends AnimatorAbs {
 	 * @param triggerOnLeaveset to false to let this trigger when the radius is entered, to true if when the radius is left
 	 */
 
-	public static native AnimatorOnProximity create(Scene scene, int radius, int idOfSceneNode, JavaScriptObject functionToCall, Boolean triggerOnLeave) /*-{
+	public static native AnimatorOnProximity create(Scene scene, int radius, int idOfSceneNode, JavaScriptObject functionToCall, boolean triggerOnLeave) /*-{
 			return new $wnd.CL3D.AnimatorOnProximity(scene, radius, idOfSceneNode, functionToCall, triggerOnLeave);
 	}-*/;
 

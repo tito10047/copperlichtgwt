@@ -36,7 +36,7 @@ public class TextureManager extends JavaScriptObject {
 	 *            set to true to create a new $wnd.CL3D.Texture object and start
 	 *            loading it if an existing once wasn't found with this url.
 	 */
-	public final native Texture getTexture(String url, Boolean createIfNotFound) /*-{
+	public final native Texture getTexture(String url, boolean createIfNotFound) /*-{
 		return this.getTexture(url, createIfNotFound);
 	}-*/;
 
