@@ -6,7 +6,6 @@
 <module rename-to='cl3dwraper'>
 	<inherits name='com.google.gwt.user.User' />
   	<inherits name='com.mostka.cl3d.CL3DWraper'/>
-	<inherits name='com.google.gwt.user.theme.clean.Clean' />
 	<entry-point class='com.mostka.cl3d.client.CL3DWraper' />
 
 	<source path='client' />
