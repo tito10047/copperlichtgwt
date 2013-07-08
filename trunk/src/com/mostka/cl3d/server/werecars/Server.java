@@ -1,43 +1,27 @@
 package com.mostka.cl3d.server.werecars;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.logging.Logger;
+import java.util.Set;
 
-import org.apache.tools.ant.taskdefs.Length;
 import org.javatuples.Pair;
 
-import no.eirikb.gwtchannelapi.server.ChannelServer;
 
-import com.google.appengine.api.channel.ChannelMessage;
-import com.google.appengine.api.channel.ChannelServiceFactory;
-import com.google.web.bindery.autobean.shared.AutoBeanCodex;
-import com.google.web.bindery.autobean.vm.AutoBeanFactorySource;
 import com.mostka.cl3d.server.werecars.BoxGrid.Start;
-import com.mostka.cl3d.shared.werecars.MessagesFactory;
 import com.mostka.cl3d.shared.werecars.message.Boxes;
+import com.mostka.cl3d.shared.werecars.message.KeyState;
 import com.mostka.cl3d.shared.werecars.message.Type;
+import com.mostka.cl3d.shared.werecars.message.UserName;
 /**
  * Werecars server: listens for events sent by the players.
  * Events processed and returned to the state of the world.
  */
 @SuppressWarnings("serial")
 public class Server implements Trans {
+    private static final Logger log = Logger.getLogger( Server.class.getName() );
 	private WsServer wsServer;
-	private class Event{
-		public static final int clientNew=0;
-		public static final int clientDead=1;
-		
-		
-		public int type;
-		public String message;
-		public Event(int type, String message) {
-			super();
-			this.type = type;
-			this.message = message;
-		}
-	}
 	private static final int floorDistance = 1;
 	private static final int rotationFactor = 20;
 	private static final int carHeight = 1;
@@ -50,6 +34,7 @@ public class Server implements Trans {
 	 * series of events
 	 */
 	private HashMap<Integer, String> eventsList = new HashMap<>();
+	private boolean eventsListLock = false;
 	/**
 	 * list of players
 	 */
@@ -61,7 +46,7 @@ public class Server implements Trans {
 	/**
 	 * a list of keystrokes each player
 	 */
-	private HashMap<String,String[]> clientStates = new HashMap<>();
+	private HashMap<String,ArrayList<KeyState>> clientStates = new HashMap<>();
 	/**
 	 * a list of statuses of internal parameters of each player
 	 */
@@ -74,30 +59,43 @@ public class Server implements Trans {
 	private BoxGrid grid;
 	private Boxes gridForClient;
 	
-	public Server(WsServer wsServer) {
-		try {
-			Pair<BoxGrid, Boxes> res = BoxGrid.readBoxFile(BoxGrid.boxList, Server.boxSize, this, this);
-			this.grid = res.getValue0();
-			this.gridForClient = res.getValue1();
-			this.wsServer=wsServer;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public Server(WsServer wsServer) throws Exception {
+		Pair<BoxGrid, Boxes> res = BoxGrid.readBoxFile(BoxGrid.boxList, Server.boxSize, this, this);
+		this.grid = res.getValue0();
+		this.gridForClient = res.getValue1();
+		this.wsServer=wsServer;
 	}
 	
 	private static boolean debug=true;
 
+	public Set<Entry<Integer, String>> getEvents(){
+		eventsListLock=true;
+		HashMap<Integer, String> copy = new HashMap<Integer, String>(eventsList);
+		eventsList.clear();
+		Set<Entry<Integer, String>> events = copy.entrySet();
+		eventsListLock=false;
+		return events;
+	}
+	
 	/**
 	 * Adds a new event in the event list.
 	 */
-	public void addEvent(int type, String message) {
+	public boolean addEvent(int type, String message) {
+		int i=0;
+		while(eventsListLock){
+			if (i++>1000){
+				log.log(null, "eventlist is locked");
+				return false;
+			}
+		}
 		eventsList.put(type, message);
 		if (!debug){
-			return;
+			return true;
 		}
-		for (int i=0;i<eventsList.size();i++){
+		for (i=0;i<eventsList.size();i++){
 			System.out.println("e-"+i+": "+eventsList.get(i));
 		}
+		return true;
 	}
 	/**
 	 * WebSocket is added to the list of active WebSocket connections and
@@ -105,14 +103,14 @@ public class Server implements Trans {
 	 */
 	public void addClient(String id){
 		clientsWsList.add(id);
-		eventsList.put(Type.newClient,id);
+		eventsList.put(Type.mNewClient,id);
 	}
 	/**
 	 * Remove from the list of active WebSocket WebSocket connections
 	 */
 	public void removeClient(String id){
 		clientsWsList.remove(id);
-		eventsList.put(Type.deadClient,id);
+		eventsList.put(Type.mDeadClient,id);
 	}
 	
 	/**
@@ -127,7 +125,7 @@ public class Server implements Trans {
 		car.angle *= Math.PI;
 		
 		if (debug){
-			System.out.println("newClient angle"+car.angle);
+			System.out.println("newClient angle "+car.angle);
 		}
 		return car;
 	}
@@ -156,17 +154,23 @@ public class Server implements Trans {
 	private boolean onClientNew(String clientId){
 		logs("New client "+clientId);
 		if (clientsList.containsKey(clientId)){
+			logs("duplicated client");
 			return false;
 		}
 		Car car = newClient();
 		clientsList.put(clientId, car);
-		clientStates.put(clientId, new String[]{});
+		clientStates.put(clientId, new ArrayList<KeyState>());
 		clientInternalList.put(clientId, newInternal());
 		clientDataList.put(clientId, new HashMap<String,Integer>(){{put("score",0);}});
+
+		wsServer.sendPublic(clientId.replace("-defaultChannel", "").replace("channel-", ""), "gfdgdf");
+		logs("test "+clientId.replace("-defaultChannel", "").replace("channel-", ""));
+
 		
 		wsServer.sendPublic(clientId, Messages.createId(clientId));
-		// TODO: sendMessage(id, *("static-boxes", self.m_gridForClients))
+		wsServer.sendPublic(clientId, gridForClient);
 		wsServer.sendPublic(clientId, Messages.createStartStartPosition(car.pos));
+		logs("client created");
 		return true;
 	}
 	private void onClientDead(String clientId){
@@ -176,8 +180,33 @@ public class Server implements Trans {
 		clientInternalList.remove(clientId);
 		clientDataList.remove(clientId);
 	}
-	// TODO: create timer 0,01s
-	private void calculate(){
+	private boolean calculating = false;
+	
+	public void calculate(){
+		if (calculating){
+			return;
+		}
+		calculating=true;
+		Set<Entry<Integer, String>> events = getEvents();
+
+		for(Entry<Integer, String> event : events){
+			logs("Received event "+event.getKey()+"-"+event.getValue());
+			switch(event.getKey()){
+			case Type.mNewClient:onClientNew(event.getValue());break;
+			case Type.mDeadClient:onClientDead(event.getValue());break;
+			case Type.mKeyState:
+				KeyState state = Messages.getKeyState(event.getValue());
+				clientStates.get(state.getClientId()).add(state);
+				break;
+			case Type.tUserName:
+				UserName userName = Messages.getUserName(event.getValue());
+				@SuppressWarnings("unchecked")
+				HashMap<String, String> data = (HashMap<String, String>) clientDataList.get(userName.getClientId());
+				data.put("name", userName.getName());
+				break;
+			default:logs("unknown event: "+event.getKey());
+			}
+		}
 			
 		HashMap<String, Integer> alreadyId = new HashMap<>();
 		HashMap<String, Integer> zFloor = new HashMap<>();
@@ -207,6 +236,7 @@ public class Server implements Trans {
 				}
 			}
 		}
+		if (false)
 		for (Entry<String, Car> entry: clientsList.entrySet()){
 			Car car = entry.getValue();
 			String id = entry.getKey();
@@ -258,7 +288,7 @@ public class Server implements Trans {
 					}else if(car.pos.z + Server.carHeight > box.pos.z && car.pos.z < zTop - 0.1){
 						if (car.pos.z + ((double)Server.carHeight) * 0.1 > box.pos.z){
 							int ax = clashaxis;
-							int ay = (ax == axisX?axisY:axisX);
+							//int ay = (ax == axisX?axisY:axisX);
 
 							boolean onLeft = carAxis[ax]<boxAxis[ax]+Server.boxRadius;
 							
@@ -320,8 +350,8 @@ public class Server implements Trans {
 				}
 			}
 			for(Entry<String, Car> oEntry : clientsList.entrySet()){
-				Car oCar = entry.getValue();
-				final String oId = entry.getKey();
+				Car oCar = oEntry.getValue();
+				final String oId = oEntry.getKey();
 				if (alreadyId.containsKey(oId)){
 					continue;
 				}
@@ -391,12 +421,14 @@ public class Server implements Trans {
 				}
 			}
 		}
-		for (Entry<String, ?> entry: clientStates.entrySet()){
+		// TODO:
+		/*for (Entry<String, ?> entry: clientStates.entrySet()){
 			Car car = clientsList.get(entry.getValue());
 			Internal internal = clientInternalList.get(entry.getValue());
 			String id = entry.getKey();
 			
-		}
+		}*/
+		calculating=false;
 	}
 	
 	private double decomposeSin(double angle, double speed){
