@@ -82,10 +82,6 @@ public class WsServer extends WebSocketServlet implements SendHandler  {
 	synchronized public void removeServer(String serverName) {
 		servers.remove(serverName);
 	}
-
-	public void sendPublic(int channel, Object o) {
-		send(channel, o);
-	}
 	
 	public void send(int token, Object o) {
         AutoBean bean = AutoBeanUtils.getAutoBean(o);

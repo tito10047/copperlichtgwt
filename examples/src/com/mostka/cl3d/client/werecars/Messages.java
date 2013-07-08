@@ -7,13 +7,14 @@ import com.mostka.cl3d.shared.werecars.MessagesFactory;
 import com.mostka.cl3d.shared.werecars.message.KeyState;
 import com.mostka.cl3d.shared.werecars.message.Type;
 import com.mostka.cl3d.shared.werecars.message.UserName;
+import com.mostka.ws.client.WebSocket;
 
 public class Messages {
 	private MessagesFactory messageFactory = GWT.create(MessagesFactory.class);
-	//private Channel channel;
+	private WebSocket socket;
 	
-	public Messages(/*Channel channel*/) {
-		//this.channel = channel;
+	public Messages(WebSocket socket) {
+		this.socket = socket;
 	}
 
 	public void sendType(int type){
@@ -22,7 +23,7 @@ public class Messages {
 		send(order);
 	}
 	
-	public void setKeyState(String userId, boolean jump, boolean up, boolean down, boolean left, boolean right){
+	public void setKeyState(int userId, boolean jump, boolean up, boolean down, boolean left, boolean right){
 		AutoBean<KeyState> order = messageFactory.getKeyState();
 		order.as().setClientId(userId);
 		order.as().setJump(jump);
@@ -45,7 +46,7 @@ public class Messages {
 	}
 	
 	public void send(AutoBean<?> bean){
-		//channel.send(AutoBeanCodex.encode(bean).getPayload());
+		socket.send(AutoBeanCodex.encode(bean).getPayload());
 	}
 
 }

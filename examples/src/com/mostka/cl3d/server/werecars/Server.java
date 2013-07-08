@@ -21,7 +21,7 @@ import com.mostka.cl3d.shared.werecars.message.UserName;
 @SuppressWarnings("serial")
 public class Server implements Trans {
     private static final Logger log = Logger.getLogger( Server.class.getName() );
-	private WsServer wsServer;
+	private SendHandler wsServer;
 	private static final int floorDistance = 1;
 	private static final int rotationFactor = 20;
 	private static final int carHeight = 1;
@@ -60,7 +60,7 @@ public class Server implements Trans {
 	private Boxes gridForClient;
 	private String serverName;
 	
-	public Server(WsServer wsServer,String serverName) throws Exception {
+	public Server(SendHandler wsServer,String serverName) throws Exception {
 		Pair<BoxGrid, Boxes> res = BoxGrid.readBoxFile(BoxGrid.boxList, Server.boxSize, this, this);
 		this.grid = res.getValue0();
 		this.gridForClient = res.getValue1();
@@ -168,9 +168,9 @@ public class Server implements Trans {
 		clientDataList.put(clientId, new HashMap<String,Integer>(){{put("score",0);}});
 
 		
-		wsServer.sendPublic(clientId, Messages.createId(clientId));
-		wsServer.sendPublic(clientId, gridForClient);
-		wsServer.sendPublic(clientId, Messages.createStartStartPosition(car.pos));
+		wsServer.send(clientId, Messages.createId(clientId));
+		wsServer.send(clientId, gridForClient);
+		wsServer.send(clientId, Messages.createStartStartPosition(car.pos));
 		logs("client created");
 		return true;
 	}

@@ -1,7 +1,6 @@
 package com.mostka.cl3d.client;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -11,7 +10,6 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import com.mostka.cl3d.client.werecars.Fps;
 import com.mostka.cl3d.client.werecars.Messages;
@@ -21,7 +19,6 @@ import com.mostka.cl3d.shared.werecars.message.Box;
 import com.mostka.cl3d.shared.werecars.message.Boxes;
 import com.mostka.cl3d.shared.werecars.message.Type;
 import com.mostka.cl3d.shared.werecars.message.UserId;
-import com.mostka.cl3d.shared.werecars.message.UserName;
 import com.mostka.cl3d.wraper.CopperLicht;
 import com.mostka.cl3d.wraper.JsFunction;
 import com.mostka.cl3d.wraper.animator.AnimatorCameraFPS;
@@ -32,6 +29,12 @@ import com.mostka.cl3d.wraper.scene.SceneNode;
 import com.mostka.cl3d.wraper.scene.SceneNodeAbs;
 import com.mostka.cl3d.wraper.scene.SkyBoxSceneNode;
 import com.mostka.cl3d.wraper.util.Vect3d; 
+import com.mostka.ws.client.ConnectionHandler;
+import com.mostka.ws.client.JsCloseEvent;
+import com.mostka.ws.client.JsErrorEvent;
+import com.mostka.ws.client.JsMessageEvent;
+import com.mostka.ws.client.JsOpenedEvent;
+import com.mostka.ws.client.WebSocket;
 
 public class Werecars implements EntryPoint {
 	
@@ -59,7 +62,7 @@ public class Werecars implements EntryPoint {
 	
 	private ArrayList<String> carsList = new ArrayList<String>();
 	private HashMap<String, SceneNode> cars = new HashMap<String, SceneNode>();
-	private String userId;
+	private int userId;
 	
 	public static void log(String str){
 		debugPanel.insert(new HTML(debugLineNumb+": "+str), 0);
@@ -67,10 +70,10 @@ public class Werecars implements EntryPoint {
 	
 	public void onModuleLoad() {
 		
-		/*if (Websocket.isSupported()==false){
+		if (WebSocket.isSupported()==false){
 			Window.alert("Websocked is not suported");
 			return;
-		}*/
+		}
 		
 		debugPanel = RootPanel.get("debug");
 		fpsDataPanel = RootPanel.get("fps-data");
@@ -152,12 +155,9 @@ public class Werecars implements EntryPoint {
 				rootSceneNode.addChild(cam);
 				scene.setActiveCamera(cam);
 				
-				/*channel = new Channel("defaultChannel");
-				channel.addChannelListener(channelListener);
-				messages = new Messages(channel);
-				channel.join();*/
-				
-				//createCar("dsad", car3SceneNode);
+				WebSocket socked = new WebSocket("default");
+				messages = new Messages(socked);
+				socked.setHandler(channelListaner);
 				
 				return null;
 			}
@@ -169,29 +169,19 @@ public class Werecars implements EntryPoint {
 		addKeyHandler();
 	}
 	
-	private void ChanelTest(String message){
-		/*
-        AutoBean<MyMessage> bean = AutoBeanCodex.decode(myFactory, MyMessage.class, message);
-        return bean.as();*/
-	}
-	private String myId;
+	private int myId;
 	private String myName;
-	/*private ChannelListener channelListener = new ChannelListener() {
-		public void onOpen() {
+	
+	ConnectionHandler channelListaner = new ConnectionHandler() {
+		
+		@Override
+		public void onOpen(JsOpenedEvent openEvent) {
 			CL3DTut3.log("opened");
-			sendKeyState.scheduleRepeating(100);
-			
-			/*AutoBean<UserName> order = messageFactory.getUserName();
-			
-			order.as().setType(Type.tUserName);
-			order.as().setId(myId);
-			order.as().setName(myName);
-			
-			channel.send(AutoBeanCodex.encode(order).getPayload());
-			
 		}
 		
-		public void onMessage(String message) {
+		@Override
+		public void onMessage(JsMessageEvent mesageEvent) {
+			String message = mesageEvent.getData();
 			CL3DTut3.log("received");
 			log("> "+message);
 			Type type = AutoBeanCodex.decode(messageFactory, Type.class, message).as();
@@ -199,8 +189,11 @@ public class Werecars implements EntryPoint {
 			case Type.mBadChannel: Window.alert("bad chanel");break;
 			case Type.mServerCrash: Window.alert("Server crash");break;
 			case Type.tUserId: 
+				sendKeyState.scheduleRepeating(100);
 				UserId myUserId = AutoBeanCodex.decode(messageFactory, UserId.class, message).as();
-				userId = myUserId.getId();break;
+				userId = myUserId.getId();
+				messages.sendUserName(userId, "My name");
+				break;
 			/*case Type.userId:
 				UserId userId = AutoBeanCodex.decode(messageFactory, UserId.class, message).as();
 				myId = userId.getId();
@@ -216,21 +209,23 @@ public class Werecars implements EntryPoint {
 				break;
 			case Type.tBoxes:
 				
-				break;
+				break;*/
 			}
-			
 		}
-		public void onError(int code, String description) {
+			
+		@Override
+		public void onError(JsErrorEvent errorEvent) {
 			CL3DTut3.log("error");
-			CL3DTut3.log(description);
-			
+			CL3DTut3.log(errorEvent);
 		}
-		public void onClose() {
+		
+		@Override
+		public void onClose(JsCloseEvent closeEvent) {
 			CL3DTut3.log("close");
-			messages.sendType(Type.mOnClose);
 			sendKeyState.cancel();
 		}
-	};*/
+	};
+	
 	
 	private void onMessageStaticBoxes(Boxes boxesMess){
 		log("loading level");

@@ -22,6 +22,6 @@ public interface Type {
 	
 	public int getType();
 	public void setType(int type);
-	public String getClientId();
-	public void setClientId(String jump);
+	public int getClientId();
+	public void setClientId(int jump);
 }
