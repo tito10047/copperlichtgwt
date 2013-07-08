@@ -3,13 +3,9 @@
 	so that your app can take advantage of the latest GWT module capabilities. -->
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.5.1//EN"
   "http://google-web-toolkit.googlecode.com/svn/tags/2.5.1/distro-source/core/src/gwt-module.dtd">
-<module rename-to='cl3dwraper'>
+<module rename-to='mostka.CL3DWraper'>
 	<inherits name='com.google.gwt.user.User' />
-	<inherits name='com.google.gwt.user.theme.clean.Clean' />
-	<entry-point class='com.mostka.cl3d.client.CL3DWraper' />
 
-	<source path='client' />
-	<source path='shared' />
 	<source path='wraper' />
 
 </module>

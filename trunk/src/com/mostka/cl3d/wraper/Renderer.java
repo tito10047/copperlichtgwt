@@ -2,7 +2,6 @@ package com.mostka.cl3d.wraper;
 
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.mostka.cl3d.client.CL3DTut3;
 import com.mostka.cl3d.wraper.util.Material;
 import com.mostka.cl3d.wraper.util.Matrix4;
 import com.mostka.cl3d.wraper.util.Mesh;
