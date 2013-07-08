@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="C:/gwt/lib/jetty-distribution-8.1.11.v20130520/lib/servlet-api-3.0.jar"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/gwt/lib/jetty-all-server-8.1.11.v20130520.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/gwt-ws-trunk"/>
+	<classpathentry exported="true" kind="lib" path="C:/gwt/src/gwt-jetty/gwt-jetty-8.1.11.jar" sourcepath="/de.csenk.gwt.jetty-8.1.11"/>
+	<classpathentry kind="lib" path="C:/gwt/lib/javatuples-1.2/lib/javatuples-1.2.jar" sourcepath="C:/gwt/lib/javatuples-1.2/dist/javatuples-1.2-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/gwt/lib/javatuples-1.2/dist/javatuples-1.2-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/CL3DWraperCore"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>
