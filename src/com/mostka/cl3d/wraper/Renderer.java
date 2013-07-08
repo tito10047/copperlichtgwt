@@ -2,10 +2,16 @@ package com.mostka.cl3d.wraper;
 
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.mostka.cl3d.client.CL3DTut3;
 import com.mostka.cl3d.wraper.util.Material;
 import com.mostka.cl3d.wraper.util.Matrix4;
 import com.mostka.cl3d.wraper.util.Mesh;
 import com.mostka.cl3d.wraper.util.MeshBuffer;
+import com.mostka.cl3d.wraper.webgl.ContextWebGL;
+import com.mostka.cl3d.wraper.webgl.WebGLBuffer;
+import com.mostka.cl3d.wraper.webgl.WebGLFloatArray;
+import com.mostka.cl3d.wraper.webgl.WebGLProgram;
+import com.mostka.cl3d.wraper.webgl.WebGLUnsignedShortArray;
 
 public class Renderer extends JavaScriptObject {
 
@@ -19,6 +25,23 @@ public class Renderer extends JavaScriptObject {
 
 	public static native Renderer create() /*-{
 		return new $wnd.CL3D.Renderer();
+	}-*/;
+	public final native void postInitWebGl() /*-{
+		
+		var vs_shader_3ddrawing_coloronly =  ""+
+			"#ifdef GL_ES								\n"+
+			"precision highp float;						\n"+
+			"#endif										\n"+
+			"uniform mat4 worldviewproj;				"+
+			"attribute vec4 vPosition;					"+
+			"attribute vec4 vNormal;					"+
+			"void main()								"+
+			"{											"+
+			"	gl_Position = worldviewproj * vPosition;"+
+			"}";
+		
+		
+		this.Program3DDrawingColorOnly = this.createMaterialTypeInternal(vs_shader_3ddrawing_coloronly, this.fs_shader_simplecolor);
 	}-*/;
 
 	/**
@@ -102,7 +125,7 @@ public class Renderer extends JavaScriptObject {
 	 *            copied without scaling. This is useful for font or 2D
 	 *            textures, for example, to make them less blurry.
 	 */
-	public final native JavaScriptObject createTextureFrom2DCanvas(Canvas canvas, Boolean nonscaling) /*-{
+	public final native JavaScriptObject createTextureFrom2DCanvas(Canvas canvas, boolean nonscaling) /*-{
 		return this.createTextureFrom2DCanvas(canvas, nonscaling);
 	}-*/;
 
@@ -137,7 +160,7 @@ public class Renderer extends JavaScriptObject {
 	 * @param srcRightX
 	 * @param srcBottomY
 	 */
-	public final native JavaScriptObject draw2DImage(int x, int y, int width, int height, Texture tex, Boolean blend, JavaScriptObject shaderToUse,
+	public final native JavaScriptObject draw2DImage(int x, int y, int width, int height, Texture tex, boolean blend, JavaScriptObject shaderToUse,
 			JavaScriptObject srcRightX, JavaScriptObject srcBottomY) /*-{
 		return this.draw2DImage(x, y, width, height, tex, blend, shaderToUse,
 				srcRightX, srcBottomY);
@@ -158,7 +181,7 @@ public class Renderer extends JavaScriptObject {
 	 *            (optional) set to true to enable alpha blending (using the
 	 *            alpha component of the color) and false not to blend
 	 */
-	public final native JavaScriptObject draw2DRectangle(int x, int y, int width, int height, int color, Boolean blend) /*-{
+	public final native JavaScriptObject draw2DRectangle(int x, int y, int width, int height, int color, boolean blend) /*-{
 		return this.draw2DRectangle(x, y, width, height, color, blend);
 	}-*/;
 
@@ -231,7 +254,7 @@ public class Renderer extends JavaScriptObject {
 	/**
 	 * Returns access to the webgl interface. This should not be needed.
 	 */
-	public final native JavaScriptObject getWebGL() /*-{
+	public final native ContextWebGL getWebGL() /*-{
 		return this.getWebGL();
 	}-*/;
 
@@ -295,5 +318,130 @@ public class Renderer extends JavaScriptObject {
 	public final native JavaScriptObject setWorld(Matrix4 m) /*-{
 			return this.setWorld(m);
 	}-*/;
+	protected final native WebGLProgram  getProgram2DDrawingColorOnly() /*-{
+			return this.Program2DDrawingColorOnly;
+	}-*/;
+	protected final native WebGLProgram  getProgram3DDrawingColorOnly() /*-{
+			return this.Program3DDrawingColorOnly;
+	}-*/;
+	protected final native WebGLProgram  setCurrentGLProgram(WebGLProgram program) /*-{
+			return this.currentGLProgram = program;
+	}-*/;
+	
+	public final void draw2DLine(double x1,double  y1,double  x2,double  y2,int  color,boolean blend){
+			 
+	    if (this.getWidth() == 0 || this.getHeight() == 0) {
+	        return;
+	    }
+	    boolean m = true;
+	    if ( blend == false) {
+	        m = false;
+	    }
+	 
+	    ContextWebGL gl = this.getWebGL();
+	    /*gl.enableVertexAttribArray(0);
+	    gl.disableVertexAttribArray(1);
+	    gl.disableVertexAttribArray(2);
+	    gl.disableVertexAttribArray(3);
+	    gl.disableVertexAttribArray(4);*/
+	    y1 = (double) this.getHeight() - y1;
+	    y2 = (double) this.getHeight() - y2;
+	    double n = 2 / (double) this.getWidth();
+	    double l = 2 / (double) this.getHeight();
+	    x1 = (x1 * n) - 1;
+	    y1 = (y1 * l) - 1;
+	    x2 = (x2 * n) - 1;
+	    y2 = (y2 * l) - 1;
+	       
+	    WebGLFloatArray g = WebGLFloatArray.create( 6 );
+	    WebGLUnsignedShortArray k = WebGLUnsignedShortArray.create(2);
+	    int i = 2;
+	   
+	    g.set(0, x1);
+	    g.set(1, y1);
+	    g.set(2, 0);
+	    g.set(3, x2);
+	    g.set(4, y2);
+	    g.set(5, 0);
+	    k.set(0 ,0);
+	    k.set(1 ,1);
+	               
+	    WebGLBuffer f = gl.createBuffer();
+	    gl.bindBuffer(ContextWebGL.ARRAY_BUFFER, f);
+	    gl.bufferData(ContextWebGL.ARRAY_BUFFER, g, ContextWebGL.STATIC_DRAW);
+	    gl.vertexAttribPointer(0, 3, ContextWebGL.FLOAT, false, 0, 0);
+	    WebGLBuffer c = gl.createBuffer();
+	    gl.bindBuffer(ContextWebGL.ELEMENT_ARRAY_BUFFER, c);
+	    gl.bufferData(ContextWebGL.ELEMENT_ARRAY_BUFFER, k, ContextWebGL.STATIC_DRAW);
+	    WebGLProgram program = this.getProgram2DDrawingColorOnly();
+	    this.setCurrentGLProgram( program );
+	    gl.useProgram(program);
+	    gl.uniform4f(gl.getUniformLocation(program, "vColor"), CL3D.getRed(color) / 255, CL3D.getGreen(color) / 255, CL3D.getBlue(color) / 255, m ? (CL3D.getAlpha(color) / 255) : 1);
+	    gl.depthMask(false);
+	    gl.disable(ContextWebGL.DEPTH_TEST);
+	    if (!m) {
+	        gl.disable(ContextWebGL.BLEND);
+	    } else {
+	        gl.enable(ContextWebGL.BLEND);
+	        gl.blendFunc(ContextWebGL.SRC_ALPHA, ContextWebGL.ONE_MINUS_SRC_ALPHA);
+	    }
+	    gl.drawElements(ContextWebGL.LINES, i, ContextWebGL.UNSIGNED_SHORT, 0);
+	    gl.deleteBuffer(f);
+	    gl.deleteBuffer(c);
+	}
 
+	public final void draw3DLine(int x1, int y1, int z1, int x2, int y2, int z2, int color, boolean blend) {
+		if (this.getWidth() == 0 || this.getHeight() == 0) {
+	        return;
+	    }
+	    boolean m = true;
+	    if ( blend == false) {
+	        m = false;
+	    }
+	 
+	    ContextWebGL gl = this.getWebGL();
+	    gl.enableVertexAttribArray(0);
+	    gl.disableVertexAttribArray(1);
+	    gl.disableVertexAttribArray(2);
+	    gl.disableVertexAttribArray(3);
+	    gl.disableVertexAttribArray(4);
+	    
+	    WebGLFloatArray g = WebGLFloatArray.create( 6 );
+	    WebGLUnsignedShortArray k = WebGLUnsignedShortArray.create(2);
+	    int i = 2;
+	   
+	    g.set(0, x1);
+	    g.set(1, y1);
+	    g.set(2, z1);
+	    g.set(3, x2);
+	    g.set(4, y2);
+	    g.set(5, z2);
+	    k.set(0 ,0);
+	    k.set(1 ,1);
+	    
+	    WebGLBuffer f = gl.createBuffer();
+	    gl.bindBuffer(ContextWebGL.ARRAY_BUFFER, f);
+	    gl.bufferData(ContextWebGL.ARRAY_BUFFER, g, ContextWebGL.STATIC_DRAW);
+	    gl.vertexAttribPointer(0, 3, ContextWebGL.FLOAT, false, 0, 0);
+	    WebGLBuffer c = gl.createBuffer();
+	    gl.bindBuffer(ContextWebGL.ELEMENT_ARRAY_BUFFER, c);
+	    gl.bufferData(ContextWebGL.ELEMENT_ARRAY_BUFFER, k, ContextWebGL.STATIC_DRAW);
+	    gl.vertexAttribPointer(0, 3, ContextWebGL.FLOAT, false, 0, 0);
+	     WebGLProgram program = this.getProgram3DDrawingColorOnly();
+	    this.setCurrentGLProgram( program );
+	    gl.useProgram(program);
+	    gl.uniform4f(gl.getUniformLocation(program, "vColor"), CL3D.getRed(color) / 255, CL3D.getGreen(color) / 255, CL3D.getBlue(color) / 255, m ? (CL3D.getAlpha(color) / 255) : 1);
+	    gl.depthMask(false);
+	    gl.disable(ContextWebGL.DEPTH_TEST);
+	    if (!m) {
+	        gl.disable(ContextWebGL.BLEND);
+	    } else {
+	        gl.enable(ContextWebGL.BLEND);
+	        gl.blendFunc(ContextWebGL.SRC_ALPHA, ContextWebGL.ONE_MINUS_SRC_ALPHA);
+	    }
+	    gl.drawElements(ContextWebGL.LINES, i, ContextWebGL.UNSIGNED_SHORT, 0);
+	    gl.deleteBuffer(f);
+	    gl.deleteBuffer(c);
+	}
+	
 }

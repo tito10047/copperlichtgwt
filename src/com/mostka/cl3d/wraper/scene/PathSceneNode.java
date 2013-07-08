@@ -19,14 +19,14 @@ public class PathSceneNode extends SceneNodeAbs {
 	/**
 	 * Specifies if the path is a closed circle or a unclosed line.
 	 */
-	public final native Boolean getIsClosedCircle() /*-{
+	public final native boolean getIsClosedCircle() /*-{
 		return this.IsClosedCircle;
 	}-*/;
 
 	/**
 	 * Specifies if the path is a closed circle or a unclosed line.
 	 */
-	public final native void setIsClosedCircle(Boolean IsClosedCircle) /*-{
+	public final native void setIsClosedCircle(boolean IsClosedCircle) /*-{
 		this.IsClosedCircle = IsClosedCircle;
 	}-*/;
 
@@ -91,7 +91,7 @@ public class PathSceneNode extends SceneNodeAbs {
 	 *            the path scene node, set to false to receive the position in
 	 *            absolute world space.
 	 */
-	public final native JavaScriptObject getPointOnPath(int posOnPath, Boolean relative) /*-{
+	public final native JavaScriptObject getPointOnPath(int posOnPath, boolean relative) /*-{
 		return this.getPointOnPath(posOnPath, relative);
 	}-*/;
 

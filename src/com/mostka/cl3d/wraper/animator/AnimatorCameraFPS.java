@@ -55,28 +55,28 @@ public class AnimatorCameraFPS extends AnimatorAbs {
 	/**
 	 * Defines if the animator may move the camera
 	 */
-	public final native Boolean getMayMove() /*-{
+	public final native boolean getMayMove() /*-{
 		return this.MayMove;
 	}-*/;
 
 	/**
 	 * Defines if the animator may move the camera
 	 */
-	public final native void setMayMove(Boolean MayMove) /*-{
+	public final native void setMayMove(boolean MayMove) /*-{
 		this.MayMove = MayMove;
 	}-*/;
 
 	/**
 	 * Defines if the animator may zoom the camera
 	 */
-	public final native Boolean getMayZoom() /*-{
+	public final native boolean getMayZoom() /*-{
 		return this.MayZoom;
 	}-*/;
 
 	/**
 	 * Defines if the animator may zoom the camera
 	 */
-	public final native void setMayZoom(Boolean MayZoom) /*-{
+	public final native void setMayZoom(boolean MayZoom) /*-{
 		this.MayZoom = MayZoom;
 	}-*/;
 
@@ -97,14 +97,14 @@ public class AnimatorCameraFPS extends AnimatorAbs {
 	/**
 	 * Defines if the animator may only move the camera horizontally
 	 */
-	public final native Boolean getNoVerticalMovement() /*-{
+	public final native boolean getNoVerticalMovement() /*-{
 		return this.NoVerticalMovement;
 	}-*/;
 
 	/**
 	 * Defines if the animator may only move the camera horizontally
 	 */
-	public final native void setNoVerticalMovement(Boolean NoVerticalMovement) /*-{
+	public final native void setNoVerticalMovement(boolean NoVerticalMovement) /*-{
 		this.NoVerticalMovement = NoVerticalMovement;
 	}-*/;
 

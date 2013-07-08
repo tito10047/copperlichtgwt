@@ -31,7 +31,7 @@ public class CopperLicht extends JavaScriptObject {
 	 *            to appear while the file is being loaded.
 	 */
 
-	public static native CopperLicht create(String elementIdOfCanvas, JavaScriptObject showInfoTexts, int fps, Boolean showFPSCounter, String loadingScreenText) /*-{
+	public static native CopperLicht create(String elementIdOfCanvas, JavaScriptObject showInfoTexts, int fps, boolean showFPSCounter, String loadingScreenText) /*-{
 		return new $wnd.CL3D.CopperLicht(elementIdOfCanvas, showInfoTexts, fps,
 				showFPSCounter, loadingScreenText);
 	}-*/;
@@ -49,17 +49,10 @@ public class CopperLicht extends JavaScriptObject {
 	 * use this to draw some additional stuff like 2d overlays or similar. Use
 	 * it for example like here:
 	 */
-	public final native JavaScriptObject getOnAfterDrawAll() /*-{
-		return this.OnAfterDrawAll;
-	}-*/;
-
-	/**
-	 * Event handler called after the scene has been completely drawn. You can
-	 * use this to draw some additional stuff like 2d overlays or similar. Use
-	 * it for example like here:
-	 */
-	public final native void setOnAfterDrawAll(JavaScriptObject OnAfterDrawAll) /*-{
-		this.OnAfterDrawAll = OnAfterDrawAll;
+	public final native void setOnAfterDrawAll(JsFunction func) /*-{
+		this.OnAfterDrawAll = function(){
+			func.@com.mostka.cl3d.wraper.JsFunction::execute(*)({});
+		}	
 	}-*/;
 
 	/**
@@ -168,7 +161,7 @@ public class CopperLicht extends JavaScriptObject {
 	 *            y coordinate on the canvas. You can use CopperLicht.getMouseY
 	 *            for the current mouse cursor position.
 	 */
-	public final native JavaScriptObject get3DPositionFrom2DPosition(int x, int y) /*-{
+	public final native Vect3d get3DPositionFrom2DPosition(int x, int y) /*-{
 		return this.get3DPositionFrom2DPosition(x, y);
 	}-*/;
 
@@ -250,7 +243,7 @@ public class CopperLicht extends JavaScriptObject {
 	 * @param ignorecase
 	 *            set to true to ignore the case of the name
 	 */
-	public final native JavaScriptObject gotoSceneByName(String scene, Boolean ignorecase) /*-{
+	public final native JavaScriptObject gotoSceneByName(String scene, boolean ignorecase) /*-{
 		return this.gotoSceneByName(scene, ignorecase);
 	}-*/;
 

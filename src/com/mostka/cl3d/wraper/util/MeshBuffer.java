@@ -119,7 +119,7 @@ public class MeshBuffer extends JavaScriptObject {
 	 *            This will trigger a faster update then
 	 * @param onlyUpdateBufferIfPossible
 	 */
-	public final native JavaScriptObject update(Boolean onlyPositionsChanged, JavaScriptObject onlyUpdateBufferIfPossible) /*-{
+	public final native JavaScriptObject update(boolean onlyPositionsChanged, JavaScriptObject onlyUpdateBufferIfPossible) /*-{
 		return this.update(onlyPositionsChanged, onlyUpdateBufferIfPossible);
 	}-*/;
 

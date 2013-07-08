@@ -1,7 +1,7 @@
 package com.mostka.cl3d.wraper;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.mostka.cl3d.wraper.util.WebGlTexture;
+import com.mostka.cl3d.wraper.webgl.WebGlTexture;
 
 public class Texture extends JavaScriptObject {
 

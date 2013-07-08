@@ -84,7 +84,7 @@ public class CameraSceneNode extends SceneNodeAbs {
 	 * 
 	 * @param a
 	 */
-	public final native JavaScriptObject setAspectRatio(JavaScriptObject a) /*-{
+	public final native JavaScriptObject setAspectRatio(double a) /*-{
 		return this.setAspectRatio(a);
 	}-*/;
 
@@ -94,7 +94,7 @@ public class CameraSceneNode extends SceneNodeAbs {
 	 * 
 	 * @param nv
 	 */
-	public final native JavaScriptObject setFarValue(JavaScriptObject nv) /*-{
+	public final native JavaScriptObject setFarValue(int nv) /*-{
 		return this.setFarValue(nv);
 	}-*/;
 

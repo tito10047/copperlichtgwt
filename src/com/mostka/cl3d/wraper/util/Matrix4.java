@@ -11,7 +11,7 @@ public class Matrix4 extends JavaScriptObject{
 	 * @param bMakeIdentityIf set to true, the matrix will initially have stored the identity matrix.
 	 */
 
-	public static native Matrix4 create(Boolean bMakeIdentity) /*-{
+	public static native Matrix4 create(boolean bMakeIdentity) /*-{
 			return new $wnd.CL3D.Matrix4(bMakeIdentity);
 	}-*/;
 

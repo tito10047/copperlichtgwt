@@ -21,8 +21,8 @@ import com.mostka.cl3d.wraper.scene.CubeSceneNode;
 import com.mostka.cl3d.wraper.scene.MeshSceneNode;
 import com.mostka.cl3d.wraper.scene.PathSceneNode;
 import com.mostka.cl3d.wraper.scene.Scene;
-import com.mostka.cl3d.wraper.util.ContextWebGL;
-import com.mostka.cl3d.wraper.util.WebGlTexture;
+import com.mostka.cl3d.wraper.webgl.ContextWebGL;
+import com.mostka.cl3d.wraper.webgl.WebGlTexture;
 
 public class WebGLVirtualEnvironment implements EntryPoint {
 	

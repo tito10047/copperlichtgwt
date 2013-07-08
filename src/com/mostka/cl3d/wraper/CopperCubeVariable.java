@@ -49,7 +49,7 @@ public class CopperCubeVariable extends JavaScriptObject{
 	 * @param createIfNotExisting if the variable is not found, it will be created if this is set to true.
 	 * @param scene The current scene. This parameter is optional, this can be 0. It is used for getting runtime variables such as #player1.health
 	 */
-	public static native JavaScriptObject getVariable(String n, Boolean createIfNotExisting, Scene scene) /*-{
+	public static native JavaScriptObject getVariable(String n, boolean createIfNotExisting, Scene scene) /*-{
 			return CopperCubeVariable.getVariable(n, createIfNotExisting, scene);
 	}-*/;
 
