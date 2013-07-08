@@ -6,8 +6,7 @@
 <module rename-to='Werecars'>
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name='com.google.web.bindery.autobean.AutoBean' />
-	<inherits name='com.sksamuel.gwt.GwtWebsockets' />
-	<inherits name="no.eirikb.gwtchannelapi.GwtChannelApi" />
+  	<inherits name='com.mostka.cl3d.CL3DWraper'/>
 	<entry-point class='com.mostka.cl3d.client.Werecars' />
 
 	<source path='client' />

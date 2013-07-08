@@ -5,6 +5,7 @@
   "http://google-web-toolkit.googlecode.com/svn/tags/2.5.1/distro-source/core/src/gwt-module.dtd">
 <module rename-to='cl3dwraper'>
 	<inherits name='com.google.gwt.user.User' />
+  	<inherits name='com.mostka.cl3d.CL3DWraper'/>
 	<inherits name='com.google.gwt.user.theme.clean.Clean' />
 	<entry-point class='com.mostka.cl3d.client.CL3DWraper' />
 

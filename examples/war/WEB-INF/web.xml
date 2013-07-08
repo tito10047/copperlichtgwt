@@ -4,56 +4,9 @@
               http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
 
-	<security-constraint>
-        <web-resource-collection>
-        	<web-resource-name>Admin Resources</web-resource-name>
-            <url-pattern>/Werecars/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>*</role-name>
-        </auth-constraint>
-    </security-constraint>
     
 	<!-- Servlets -->
-	<servlet>
-		<servlet-name>socketServlet</servlet-name>
-		<servlet-class>com.mostka.cl3d.server.werecars.WhoIsClientServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>socketServlet</servlet-name>
-		<url-pattern>/Werecars/socket</url-pattern>
-	</servlet-mapping>
 	
-	<servlet>
-		<servlet-name>testServlet</servlet-name>
-		<servlet-class>com.mostka.cl3d.server.werecars.Test</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>testServlet</servlet-name>
-		<url-pattern>/Werecars/test</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>greetServlet</servlet-name>
-		<servlet-class>com.mostka.cl3d.server.werecars.GreetingServiceImpl</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>greetServlet</servlet-name>
-		<url-pattern>/Werecars/greet</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>serverServlet</servlet-name>
-		<servlet-class>com.mostka.cl3d.server.werecars.WsServer</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>serverServlet</servlet-name>
-		<url-pattern>/Werecars/channel</url-pattern>
-	</servlet-mapping>
 
 
 	<!-- Default page to serve -->
