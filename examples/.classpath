@@ -9,9 +9,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/CL3DWraperCore"/>
-	<classpathentry kind="lib" path="C:/gwt/lib/jetty-all-server-8.1.11.v20130520.jar"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/gwt-ws-trunk"/>
-	<classpathentry exported="true" kind="lib" path="C:/gwt/src/gwt-jetty/gwt-jetty-8.1.11.jar" sourcepath="/de.csenk.gwt.jetty-8.1.11"/>
-	<classpathentry kind="lib" path="C:/gwt/lib/jetty-distribution-8.1.11.v20130520/lib/servlet-api-3.0.jar"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
