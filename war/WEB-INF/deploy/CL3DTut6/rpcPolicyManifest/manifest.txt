@@ -1,2 +1,0 @@
-# Module CL3DTut6
-# RPC service class, partial path of RPC policy file
