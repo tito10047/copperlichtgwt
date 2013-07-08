@@ -10,14 +10,18 @@ import no.eirikb.gwtchannelapi.client.ChannelListener;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import com.mostka.cl3d.client.werecars.Fps;
+import com.mostka.cl3d.client.werecars.Messages;
 import com.mostka.cl3d.client.werecars.ScoreBoard;
 import com.mostka.cl3d.shared.werecars.MessagesFactory;
+import com.mostka.cl3d.shared.werecars.message.Box;
+import com.mostka.cl3d.shared.werecars.message.Boxes;
 import com.mostka.cl3d.shared.werecars.message.Type;
 import com.mostka.cl3d.shared.werecars.message.UserId;
 import com.mostka.cl3d.shared.werecars.message.UserName;
@@ -25,6 +29,7 @@ import com.mostka.cl3d.wraper.CopperLicht;
 import com.mostka.cl3d.wraper.JsFunction;
 import com.mostka.cl3d.wraper.animator.AnimatorCameraFPS;
 import com.mostka.cl3d.wraper.scene.CameraSceneNode;
+import com.mostka.cl3d.wraper.scene.CubeSceneNode;
 import com.mostka.cl3d.wraper.scene.Scene;
 import com.mostka.cl3d.wraper.scene.SceneNode;
 import com.mostka.cl3d.wraper.scene.SceneNodeAbs;
@@ -36,23 +41,30 @@ public class Werecars implements EntryPoint {
 	
 	private static CopperLicht engine;
 	private static Scene scene;
+	private SceneNodeAbs rootSceneNode;
 	
 	private boolean showDebug = true;
 	private boolean showFps = true;
 	private static RootPanel debugPanel;
 	private static RootPanel fpsDataPanel;
 	private static int debugLineNumb = 0;
+	private static boolean key_space;
+	private static boolean key_left;
+	private static boolean key_up;
+	private static boolean key_right;
+	private static boolean key_down;
 	private int dateTimeSent;
 	private int countSent;
 	private Fps fpsManager;
 	private ScoreBoard scoreBoars;
 
 	private Channel channel;
+	private Messages messages;
 	private MessagesFactory messageFactory = GWT.create(MessagesFactory.class);
 	
 	private ArrayList<String> carsList = new ArrayList<String>();
 	private HashMap<String, SceneNode> cars = new HashMap<String, SceneNode>();
-	private String userId = getRandId();
+	private String userId;
 	
 	public static void log(String str){
 		debugPanel.insert(new HTML(debugLineNumb+": "+str), 0);
@@ -95,7 +107,7 @@ public class Werecars implements EntryPoint {
 				// ================================
 				// = Settings =
 				// ================================
-				SceneNodeAbs rootSceneNode = scene.getRootSceneNode();
+				rootSceneNode = scene.getRootSceneNode();
 				
 				// Plot the sky (sky box)
 				SkyBoxSceneNode skybox = SkyBoxSceneNode.create();
@@ -147,8 +159,10 @@ public class Werecars implements EntryPoint {
 				
 				channel = new Channel("defaultChannel");
 				channel.addChannelListener(channelListener);
+				messages = new Messages(channel);
 				channel.join();
 				
+				//createCar("dsad", car3SceneNode);
 				
 				return null;
 			}
@@ -170,24 +184,29 @@ public class Werecars implements EntryPoint {
 	private ChannelListener channelListener = new ChannelListener() {
 		public void onOpen() {
 			CL3DTut3.log("opened");
+			sendKeyState.scheduleRepeating(100);
 			
-			AutoBean<UserName> order = messageFactory.getUserName();
+			/*AutoBean<UserName> order = messageFactory.getUserName();
 			
-			order.as().setType(Type.userName);
+			order.as().setType(Type.tUserName);
 			order.as().setId(myId);
 			order.as().setName(myName);
 			
-			channel.send(AutoBeanCodex.encode(order).getPayload());
+			channel.send(AutoBeanCodex.encode(order).getPayload());*/
+			
 		}
 		
 		public void onMessage(String message) {
 			CL3DTut3.log("received");
-			CL3DTut3.log(message);
-			/*CL3DTut3.log(message);
 			log("> "+message);
 			Type type = AutoBeanCodex.decode(messageFactory, Type.class, message).as();
 			switch (type.getType()){
-			case Type.userId:
+			case Type.mBadChannel: Window.alert("bad chanel");break;
+			case Type.mServerCrash: Window.alert("Server crash");break;
+			case Type.tUserId: 
+				UserId myUserId = AutoBeanCodex.decode(messageFactory, UserId.class, message).as();
+				userId = myUserId.getId();break;
+			/*case Type.userId:
 				UserId userId = AutoBeanCodex.decode(messageFactory, UserId.class, message).as();
 				myId = userId.getId();
 				
@@ -199,9 +218,12 @@ public class Werecars implements EntryPoint {
 				
 				channel.send(AutoBeanCodex.encode(order).getPayload());
 				
+				break;*/
+			case Type.tBoxes:
+				
 				break;
 			}
-			*/
+			
 		}
 		public void onError(int code, String description) {
 			CL3DTut3.log("error");
@@ -210,25 +232,32 @@ public class Werecars implements EntryPoint {
 		}
 		public void onClose() {
 			CL3DTut3.log("close");
+			messages.sendType(Type.mOnClose);
+			sendKeyState.cancel();
 		}
 	};
 	
-	private String getRandId(){
-		String text = "";
-		String possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-	    for( int i=0; i < 5; i++ ){
-	        text += possible.charAt((int) Math.floor(Math.random() * possible.length()));
-	    }
-
-	    return text;
+	private void onMessageStaticBoxes(Boxes boxesMess){
+		log("loading level");
+		Box[] boxes = boxesMess.getBoxes();
+		for(Box box : boxes){
+			CubeSceneNode cubeNode = CubeSceneNode.create(box.getSize());
+			cubeNode.setPos(box.getX(), box.getY(), box.getZ());
+			rootSceneNode.addChild(cubeNode);
+			cubeNode.getMaterial(0).setTex1(
+				engine.getTextureManager()
+				.getTexture(
+						"/werecars/levels/cube/"+box.getType()+".jpg", true)
+			);
+		}
 	}
 	
 	private void createCar(String id, SceneNode car){
 		log("createCar");
 		SceneNode carNode = (SceneNode) scene.getSceneNodeFromName(
 				"car" + ( Math.floor( (Math.random() * 3) + 1.5 ) )
-		).createClone(scene.getRootSceneNode());
+		);
+		carNode.createClone(scene.getRootSceneNode());
 		
 		carNode.setPos(
 				car.getPos().getX(),
@@ -260,6 +289,13 @@ public class Werecars implements EntryPoint {
 		cars.remove(id);
 	}
 	
+	Timer sendKeyState = new Timer() {
+		public void run() {
+			if (key_space || key_up || key_down || key_left || key_right){
+				messages.setKeyState(userId,key_space, key_up, key_down, key_left, key_right);
+			}
+		}
+	};
 	
 	public final native String concatObject(Object obj) /*-{
 		var str = '';
@@ -268,9 +304,53 @@ public class Werecars implements EntryPoint {
 		}
 		return (str);
 	}-*/;
-	
-	public static void onKeyUp(int key, Object event){
-		
+	public static void onKeyDown(int keyCode, Object event){
+		switch (keyCode) {
+		case 32:
+			key_space = true;
+			log("key_space keydown");
+			break;
+		case 39:
+			key_left = true;
+			log("key_left keydown");
+			break;
+		case 38:
+			key_up = true;
+			log("key_up keydown");
+			break;
+		case 37:
+			key_right = true;
+			log("key_right keydown");
+			break;
+		case 40:
+			key_down = true;
+			log("key_down keydown");
+			break;
+		}
+	}
+	public static void onKeyUp(int keyCode, Object event){
+		switch (keyCode) {
+		case 32:
+			key_space = false;
+			log("key_space keyup");
+			break;
+		case 39:
+			key_left = false;
+			log("key_left keyup");
+			break;
+		case 38:
+			key_up = false;
+			log("key_up keyup");
+			break;
+		case 37:
+			key_right = false;
+			log("key_right keyup");
+			break;
+		case 40:
+			key_down = false;
+			log("key_down keyup");
+			break;
+		}
 		
 		
 		// we need to call the key handler of the 3d engine as well, so that the user is
@@ -284,6 +364,11 @@ public class Werecars implements EntryPoint {
 		$wnd.document.onkeyup = function(event){
 			docOnKeyUp(event);
 			@com.mostka.cl3d.client.Werecars::onKeyUp(ILjava/lang/Object;)(event.keyCode,event);
+		}
+		var docOnKeyDown = $wnd.document.onkeydown;
+		$wnd.document.onkeydown = function(event){
+			docOnKeyDown(event);
+			@com.mostka.cl3d.client.Werecars::onKeyDown(ILjava/lang/Object;)(event.keyCode,event);
 		}
 	}-*/;
 }

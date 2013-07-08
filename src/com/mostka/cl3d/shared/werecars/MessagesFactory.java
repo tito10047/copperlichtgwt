@@ -5,6 +5,7 @@ import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 import com.mostka.cl3d.shared.werecars.message.Box;
 import com.mostka.cl3d.shared.werecars.message.Boxes;
 import com.mostka.cl3d.shared.werecars.message.Cars;
+import com.mostka.cl3d.shared.werecars.message.KeyState;
 import com.mostka.cl3d.shared.werecars.message.Position;
 import com.mostka.cl3d.shared.werecars.message.Scores;
 import com.mostka.cl3d.shared.werecars.message.Type;
@@ -20,4 +21,5 @@ public interface MessagesFactory extends AutoBeanFactory{
 	AutoBean<Cars> getCars();
 	AutoBean<UserName> getUserName();
 	AutoBean<Type> getType();
+	AutoBean<KeyState> getKeyState();
 }

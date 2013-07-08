@@ -105,8 +105,8 @@ public class BoxGrid {
 				}
 			}
 		}
-		BoxGrid grid = new BoxGrid(mx[x], mx[y], mx[z], toBox, fromBox);
-		ArrayList<com.mostka.cl3d.shared.werecars.message.Box> forClient = new ArrayList<>();
+		BoxGrid grid = new BoxGrid(mx[x]+1, mx[y]+1, mx[z]+1, toBox, fromBox);
+		com.mostka.cl3d.shared.werecars.message.Box[] forClient = new com.mostka.cl3d.shared.werecars.message.Box[boxList.length/4];
 		for(int i=0;i<boxList.length;i+=4){
 			if (boxList[i]>=20 && boxList[i]<24){
 				// Coordinates type 20,21,22,23 represent the initial positions of players and will not be displayed on the screen.
@@ -116,11 +116,10 @@ public class BoxGrid {
 				grid.setBox(boxList[i+x], boxList[i+y], boxList[i+z], boxList[i+type]);
 				Position pos = fromBox.fromBox(boxList[i+x], boxList[i+y], boxList[i+z]);
 				com.mostka.cl3d.shared.werecars.message.Box box = Messages.createBox(pos.x, pos.y, pos.z, boxSize, boxList[i+type]);
-				forClient.add(box);
+				forClient[i/4]=box;
 			}
 		}
-		Boxes boxes = Messages.createBoxes((com.mostka.cl3d.shared.werecars.message.Box[]) forClient.toArray());
-		
+		Boxes boxes = Messages.createBoxes(forClient);
 		return new Pair<BoxGrid, Boxes>(grid, boxes);
 	}
 }
