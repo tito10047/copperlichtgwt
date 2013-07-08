@@ -34,7 +34,7 @@ public class Messages {
 		send(order);
 	}
 	
-	public void sendUserName(String myId, String myName){
+	public void sendUserName(int myId, String myName){
 		AutoBean<UserName> order = messageFactory.getUserName();
 		
 		order.as().setType(Type.tUserName);

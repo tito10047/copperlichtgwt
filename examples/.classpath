@@ -10,5 +10,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/CL3DWraperCore"/>
+	<classpathentry kind="lib" path="C:/gwt/lib/jetty-all-server-8.1.11.v20130520.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/gwt-ws-trunk"/>
+	<classpathentry kind="lib" path="C:/gwt/src/gwt-jetty/gwt-jetty-8.1.11.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

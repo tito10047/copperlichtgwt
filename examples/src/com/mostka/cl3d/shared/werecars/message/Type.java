@@ -18,6 +18,7 @@ public interface Type {
 	public static final int mKeyState =		14;
 	public static final int mServerCrash =	15;
 	public static final int mTimeout =		16;
+	public static final int mKicked =		17;
 	
 	public int getType();
 	public void setType(int type);

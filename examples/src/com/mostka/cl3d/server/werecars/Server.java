@@ -38,32 +38,34 @@ public class Server implements Trans {
 	/**
 	 * list of players
 	 */
-	private HashMap<String, Car> clientsList = new HashMap<>();
+	private HashMap<Integer, Car> clientsList = new HashMap<>();
 	/**
 	 * list WebSocket connections each player
 	 */
-	private ArrayList<String> clientsWsList = new ArrayList<String>();
+	private ArrayList<Integer> clientsWsList = new ArrayList<Integer>();
 	/**
 	 * a list of keystrokes each player
 	 */
-	private HashMap<String,ArrayList<KeyState>> clientStates = new HashMap<>();
+	private HashMap<Integer,ArrayList<KeyState>> clientStates = new HashMap<>();
 	/**
 	 * a list of statuses of internal parameters of each player
 	 */
-	private HashMap<String, Internal> clientInternalList = new HashMap<>();
+	private HashMap<Integer, Internal> clientInternalList = new HashMap<>();
 	/**
 	 * list of items each player
 	 */
-	private HashMap<String, HashMap<String, ?>> clientDataList = new HashMap<>();
+	private HashMap<Integer, HashMap<String, ?>> clientDataList = new HashMap<>();
 	private int now = 0; 
 	private BoxGrid grid;
 	private Boxes gridForClient;
+	private String serverName;
 	
-	public Server(WsServer wsServer) throws Exception {
+	public Server(WsServer wsServer,String serverName) throws Exception {
 		Pair<BoxGrid, Boxes> res = BoxGrid.readBoxFile(BoxGrid.boxList, Server.boxSize, this, this);
 		this.grid = res.getValue0();
 		this.gridForClient = res.getValue1();
 		this.wsServer=wsServer;
+		this.serverName=serverName;
 	}
 	
 	private static boolean debug=true;
@@ -101,16 +103,18 @@ public class Server implements Trans {
 	 * WebSocket is added to the list of active WebSocket connections and
 	 * Add a new client-new event in the event list.
 	 */
-	public void addClient(String id){
+	public void addClient(int id){
 		clientsWsList.add(id);
-		eventsList.put(Type.mNewClient,id);
+		eventsList.put(Type.mNewClient,id+"");
 	}
 	/**
-	 * Remove from the list of active WebSocket WebSocket connections
+	 * Remove from the list of active WebSocket WebSocket connections]
+	 * @return boolean server is empty
 	 */
-	public void removeClient(String id){
+	public boolean removeClient(int id){
 		clientsWsList.remove(id);
-		eventsList.put(Type.mDeadClient,id);
+		eventsList.put(Type.mDeadClient,id+"");
+		return clientsWsList.size()==0;
 	}
 	
 	/**
@@ -151,7 +155,7 @@ public class Server implements Trans {
 		return new Internal();
 	}
 	
-	private boolean onClientNew(String clientId){
+	private boolean onClientNew(int clientId){
 		logs("New client "+clientId);
 		if (clientsList.containsKey(clientId)){
 			logs("duplicated client");
@@ -162,9 +166,6 @@ public class Server implements Trans {
 		clientStates.put(clientId, new ArrayList<KeyState>());
 		clientInternalList.put(clientId, newInternal());
 		clientDataList.put(clientId, new HashMap<String,Integer>(){{put("score",0);}});
-
-		wsServer.sendPublic(clientId.replace("-defaultChannel", "").replace("channel-", ""), "gfdgdf");
-		logs("test "+clientId.replace("-defaultChannel", "").replace("channel-", ""));
 
 		
 		wsServer.sendPublic(clientId, Messages.createId(clientId));
@@ -192,7 +193,7 @@ public class Server implements Trans {
 		for(Entry<Integer, String> event : events){
 			logs("Received event "+event.getKey()+"-"+event.getValue());
 			switch(event.getKey()){
-			case Type.mNewClient:onClientNew(event.getValue());break;
+			case Type.mNewClient:onClientNew(Integer.parseInt(event.getValue()));break;
 			case Type.mDeadClient:onClientDead(event.getValue());break;
 			case Type.mKeyState:
 				KeyState state = Messages.getKeyState(event.getValue());
@@ -208,12 +209,12 @@ public class Server implements Trans {
 			}
 		}
 			
-		HashMap<String, Integer> alreadyId = new HashMap<>();
-		HashMap<String, Integer> zFloor = new HashMap<>();
+		HashMap<Integer, Integer> alreadyId = new HashMap<>();
+		HashMap<Integer, Integer> zFloor = new HashMap<>();
 		int axisX=0,axisY=1,axisZ=2;
-		for (Entry<String, Car> entry: clientsList.entrySet()){
+		for (Entry<Integer, Car> entry: clientsList.entrySet()){
 			Car car = entry.getValue();
-			String id = entry.getKey();
+			int id = entry.getKey();
 			if (car.pos.z < -290){
 				car = newClient();
 				Internal inte = newInternal();
@@ -222,7 +223,7 @@ public class Server implements Trans {
 				@SuppressWarnings("unchecked")
 				HashMap<String, Object> data = (HashMap<String, Object>) clientDataList.get(id);
 				if (data.containsKey("oponentid") && data.containsKey("oponenttime")){
-					String oid = (String) data.get("oponentid");
+					int oid = (Integer) data.get("oponentid");
 					int otime = (Integer) data.get("oponenttime");
 					
 					final int sc = (Integer) clientDataList.get(oid).get("score");
@@ -237,9 +238,9 @@ public class Server implements Trans {
 			}
 		}
 		if (false)
-		for (Entry<String, Car> entry: clientsList.entrySet()){
+		for (Entry<Integer, Car> entry: clientsList.entrySet()){
 			Car car = entry.getValue();
-			String id = entry.getKey();
+			int id = entry.getKey();
 			
 			Internal internal = clientInternalList.get(id);
 			alreadyId.put(id, 1);
@@ -349,9 +350,9 @@ public class Server implements Trans {
 					}
 				}
 			}
-			for(Entry<String, Car> oEntry : clientsList.entrySet()){
+			for(Entry<Integer, Car> oEntry : clientsList.entrySet()){
 				Car oCar = oEntry.getValue();
-				final String oId = oEntry.getKey();
+				final int oId = oEntry.getKey();
 				if (alreadyId.containsKey(oId)){
 					continue;
 				}
@@ -364,9 +365,9 @@ public class Server implements Trans {
 				double dist = Math.sqrt(dx*dx + dy*dy);
 				
 				if (dist < Server.carSize && Math.abs(dz) < Server.carHeight){
-					clientDataList.put(id, new HashMap<String,String>(){{put("oponentId",oId);}});
+					clientDataList.put(id, new HashMap<String,Integer>(){{put("oponentId",oId);}});
 					clientDataList.put(id, new HashMap<String,Integer>(){{put("oponentTime",now+5);}});
-					clientDataList.put(oId, new HashMap<String,String>(){{put("oponentId",oId);}});
+					clientDataList.put(oId, new HashMap<String,Integer>(){{put("oponentId",oId);}});
 					clientDataList.put(oId, new HashMap<String,Integer>(){{put("oponentTime",now+5);}});
 					
 					double tmp = internal.zSpeed;

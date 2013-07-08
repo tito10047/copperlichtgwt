@@ -27,7 +27,7 @@ public class Messages {
 		return AutoBeanCodex.decode(messageFactory, UserName.class, message).as();
 	}
 	
-	public static UserId createId(String id){
+	public static UserId createId(int id){
 		UserId obj = messageFactory.getId().as();
 		obj.setType(Type.tUserId);
 		obj.setId(id);
@@ -67,7 +67,7 @@ public class Messages {
 		obj.setCars(cars);
 		return obj;
 	}
-	public static UserName createUserName(String id, String name){
+	public static UserName createUserName(int id, String name){
 		UserName obj = messageFactory.getUserName().as();
 		obj.setType(Type.tUserName);
 		obj.setId(id);
