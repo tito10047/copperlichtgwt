@@ -1,0 +1,93 @@
+<html><head><meta charset="UTF-8" /><script>var $gwt_version = "2.5.1";var $wnd = parent;var $doc = $wnd.document;var $moduleName, $moduleBase;var $strongName = '1D60E40BA871C4D418AB23CB159CEDC9';var $stats = $wnd.__gwtStatsEvent ? function(a) {return $wnd.__gwtStatsEvent(a);} : null,$sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;$stats && $stats({moduleName:'CL3DTut6',sessionId:$sessionId,subSystem:'startup',evtGroup:'moduleStartup',millis:(new Date()).getTime(),type:'moduleEvalStart'});</script></head><body><script><!--
+function G(){}
+function P(){}
+function Qc(){}
+function Ac(){}
+function Nb(){}
+function Sb(){}
+function Lc(a){}
+function Hc(){M()}
+function Jc(){M()}
+function Yb(a){this.b=a}
+function _b(a){this.b=a}
+function nc(b,a){b.Pos=a}
+function uc(b,a){b.Tex1=a}
+function wc(b,a){b.Indices=a}
+function p(b,a){b[b.length]=a}
+function Fb(a){$wnd.alert(a)}
+function z(a){$wnd.clearTimeout(a)}
+function D(){D=Qc;C=new G}
+function Cb(a){return new Ab[a]}
+function xc(b,a){return b.add(a)}
+function bc(b,a){return b.addScene(a)}
+function lc(b,a){return b.addChild(a)}
+function fc(b,a){return b.setWorld(a)}
+function gc(b,a){return b.lookAt(a)}
+function Oc(b,a){return b.indexOf(a)}
+function ec(b,a){return b.drawMesh(a)}
+function yc(b,a){return b.substract(a)}
+function kc(b,a){return b.addAnimator(a)}
+function cc(b,a){return b.handleKeyDown(a)}
+function vc(b,a){return b.AddMeshBuffer(a)}
+function rc(b,a){return b.setActiveCamera(a)}
+function Y(a,b){return a.cM&&!!a.cM[b]}
+function $(a,b){return a!=null&&Y(a,b)}
+function u(a,b,c){return a.apply(b,c);var d}
+function H(a,b){!a&&(a=[]);p(a,b);return a}
+function Dc(a){var b=Ab[a.b];a=null;return b}
+function N(){try{null.a()}catch(a){return a}}
+function Hb(a){$wnd.temp=a;console.log(a)}
+function n(a){M();this.b=a;L(this)}
+function V(){V=Qc;T=[];U=[];W(new P,T,U)}
+function oc(c,b){c.render=function(a){b.g(a)}}
+function sc(b,a){return b.setBackgroundColor(a)}
+function Ec(a){return typeof a=='number'&&a>0}
+function ab(a){return a!=null&&a.tM!=Qc&&!Y(a,1)}
+function pc(){return new $wnd.CL3D.CameraSceneNode}
+function jc(a){return new $wnd.CL3D.AnimatorRotation(a)}
+function hc(a,b){return new $wnd.CL3D.AnimatorCameraFPS(a,b)}
+function qc(c,a,b){return c.registerNodeForRendering(a,b)}
+function yb(a){if($(a,2)){return a}return new n(a)}
+function Nc(a,b){if(b==null){return false}return String(a)==b}
+function mc(c,b){c.OnRegisterSceneNode=function(a){b.g(a)}}
+function dc(b,a){b.OnLoadingComplete=function(){a.g(null)}}
+function Kb(){$wnd.document.onkeydown=function(a){Lb(a.keyCode,a)}}
+function A(){return $wnd.setTimeout(function(){r!=0&&(r=0);t=-1},10)}
+function y(a){a&&F((D(),C));--r;if(a){if(t!=-1){z(t);t=-1}}}
+function K(a,b){a.length>=b&&a.splice(0,b);return a}
+function Cc(a,b,c){var d;d=new Ac;Ec(c)&&Fc(c,d);return d}
+function Bc(a,b,c){var d;d=new Ac;Ec(c!=0?-c:0)&&Fc(c!=0?-c:0,d);return d}
+function R(a,b,c,d,e){var f;f=Q(e,d);S(a,b,c,f);return f}
+function S(a,b,c,d){V();X(d,T,U);d.cZ=a;d.cM=b;return d}
+function x(a,b,c){var d;d=v();try{return u(a,b,c)}finally{y(d)}}
+function W(a,b,c){var d=0,e;for(var f in a){if(e=a[f]){b[d]=f;c[d]=e;++d}}}
+function X(a,b,c){V();for(var d=0,e=b.length;d<e;++d){a[b[d]]=c[d]}}
+function tc(f,a,b,c,d,e){return f.getCollisionPointWithLine(a,b,c,d,e)}
+function ic(a,b,c,d){return new $wnd.CL3D.AnimatorCollisionResponse(a,b,c,d)}
+function Tb(a,b){!$wnd.debugGWT&&($wnd.debugGWT={});$wnd.debugGWT[a]=b}
+function Z(a){if(a!=null&&(a.tM==Qc||Y(a,1))){throw new Hc}return a}
+function F(a){var b,c;if(a.c){c=null;do{b=a.c;a.c=null;c=I(b,c)}while(a.c);a.c=c}}
+function E(a){var b,c;if(a.b){c=null;do{b=a.b;a.b=null;c=I(b,c)}while(a.b);a.b=c}}
+function w(b){return function(){try{return x(b,this,arguments)}catch(a){throw a}}}
+function gwtOnLoad(b,c,d,e){$moduleName=c;$moduleBase=d;if(b)try{Tc(xb)()}catch(a){b(c)}else{Tc(xb)()}}
+function m(a){var b,c,d;c=R(vb,Rc,0,a.length,0);for(d=0,b=a.length;d<b;++d){if(!a[d]){throw new Jc}c[d]=a[d]}}
+function M(){var a,b,c,d;c=K(O(N()),2);d=R(vb,Rc,0,c.length,0);for(a=0,b=d.length;a<b;++a){d[a]=new Lc(c[a])}m(d)}
+function L(a){var b,c,d,e;d=O(ab(a.b)?Z(a.b):null);e=R(vb,Rc,0,d.length,0);for(b=0,c=e.length;b<c;++b){e[b]=new Lc(d[b])}m(e)}
+function O(a){var b,c,d;d=a&&a.stack?a.stack.split('\n'):[];for(b=0,c=d.length;b<c;++b){d[b]=J(d[b])}return d}
+function v(){var a;if(r!=0){a=(new Date).getTime();if(a-s>2000){s=a;t=A()}}if(r++==0){E((D(),C));return true}return false}
+function Vb(a,b,c,d,e){var f;f=new $wnd.CL3D.Vertex3D(true);f.Pos.X=a;f.Pos.Y=b;f.Pos.Z=c;f.TCoords.X=d;f.TCoords.Y=e;return f}
+function Pc(c){if(c.length==0||c[0]>$c&&c[c.length-1]>$c){return c}var a=c.replace(/^(\s*)/,Uc);var b=a.replace(/\s*$/,Uc);return b}
+function I(b,c){var d,e,f;for(d=0,e=b.length;d<e;++d){f=b[d];try{f[1]?f[0].i()&&(c=H(c,f)):f[0].i()}catch(a){a=yb(a);if(!$(a,2))throw a}}return c}
+function Fc(a,b){var c;b.b=a;if(a==2){c=String.prototype}else{if(a>0){var d=Dc(b);if(d){c=d.prototype}else{d=Ab[a]=function(){};d.cZ=b;return}}else{return}}c.cZ=b}
+function Q(a,b){var c=new Array(b);if(a==3){for(var d=0;d<b;++d){var e=new Object;e.l=e.m=e.h=0;c[d]=e}}else if(a>0){var e=[null,0,false][a];for(var d=0;d<b;++d){c[d]=e}}return c}
+function Db(a){return $stats({moduleName:$moduleName,sessionId:$sessionId,subSystem:'startup',evtGroup:'moduleStartup',millis:(new Date).getTime(),type:'onModuleLoadStart',className:a})}
+function Bb(a,b,c){var d=Ab[a];if(d&&!d.cZ){_=d.prototype}else{!d&&(d=Ab[a]=function(){});_=d.prototype=b<0?{}:Cb(b);_.cM=c}for(var e=3;e<arguments.length;++e){arguments[e].prototype=_}if(d.cZ){_.cZ=d.cZ;d.cZ=null}}
+function J(a){var b,c,d;d=Uc;a=Pc(a);b=a.indexOf('(');c=a.indexOf('function')==0?8:0;if(b==-1){b=Oc(a,String.fromCharCode(64));c=a.indexOf('function ')==0?9:0}b!=-1&&(d=Pc(a.substr(c,b-c)));return d.length>0?d:'anonymous'}
+function Lb(a,b){var c,d,e,f,g;f=Jb.getScene();if(!f){return}if(a==32){c=f.getActiveCamera();g=c.getAbsolutePosition();e=xc(g,yc(c.getTarget(),g).multiplyWithScal(2000));d=tc(f.getCollisionGeometry(),g,e,true,null,true);if(d){if(!Ib){Ib=new $wnd.CL3D.CubeSceneNode;lc(f.getRootSceneNode(),Ib);uc(Ib.getMaterial(0),Jb.getTextureManager().getTexture('images/ground_stone.jpg',true))}nc(Ib,d)}}cc(Jb,b)}
+function Gb(){var b=navigator.userAgent.toLowerCase();var c=function(a){return parseInt(a[1])*1000+parseInt(a[2])};if(function(){return b.indexOf(Yc)!=-1}())return Yc;if(function(){return b.indexOf('webkit')!=-1}())return 'safari';if(function(){return b.indexOf(Zc)!=-1&&$doc.documentMode>=9}())return 'ie9';if(function(){return b.indexOf(Zc)!=-1&&$doc.documentMode>=8}())return 'ie8';if(function(){var a=/msie ([0-9]+)\.([0-9]+)/.exec(b);if(a&&a.length==3)return c(a)>=6000}())return 'ie6';if(function(){return b.indexOf('gecko')!=-1}())return Vc;return 'unknown'}
+function xb(){var a;!!$stats&&Db('com.google.gwt.useragent.client.UserAgentAsserter');a=Gb();Nc(Vc,a)||($wnd.alert('ERROR: Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (gecko1_8) does not match the runtime user.agent value ('+a+'). Expect more errors.\n'),undefined);!!$stats&&Db('com.google.gwt.user.client.DocumentModeAsserter');Eb();!!$stats&&Db('com.mostka.cl3d.client.CL3DWraper');Rb(new Sb);!!$stats&&Db('com.mostka.cl3d.client.CL3DTut6');Jb=new $wnd.startCopperLichtFromFile(Wc,'images/copperlichtdata/room.ccbjs');dc(Jb,new Nb);Kb()}
+function Wb(a){var b,c,d,e,f;this.d=new Yb(this);this.e=new _b(this);this.f=new $wnd.CL3D.SceneNode;mc(this.f,this.d);oc(this.f,this.e);this.c=new $wnd.CL3D.Mesh;this.b=new $wnd.CL3D.MeshBuffer;vc(this.c,this.b);b=[];f=S(ub,Rc,-1,[0,2,3,2,1,3,1,0,3,2,0,1]);for(d=0,e=f.length;d<e;++d){c=f[d];b[b.length]=c}wc(this.b,b);p(this.b.Vertices,Vb(0,0,10,0,0));p(this.b.Vertices,Vb(10,0,-10,1,0));p(this.b.Vertices,Vb(0,20,0,0,1));p(this.b.Vertices,Vb(-10,20,-10,1,1));this.b.Vertices[3]=Vb(-50,20,-10,1,1);Hb(this.b);uc(this.b.Mat,a.getTextureManager().getTexture('images/test.jpg',true))}
+function Rb(a){var b,c,d;Qb=new $wnd.CL3D.CopperLicht(Wc);if(!Qb.initRenderer()){Fb("this browser doesn't support WebGL");return}a.c=new $wnd.CL3D.Scene;bc(Qb,a.c);sc(a.c,$wnd.CL3D.createColor(1,0,0,64));a.b=new Wb(Qb);Tb('engine',Qb);Tb('scene',a.c);Tb('mynodeScene',a.b.f);Tb('mynode',a.b);Tb('mesh',a.b.c);lc(a.c.getRootSceneNode(),a.b.f);kc(a.b.f,jc(new $wnd.CL3D.Vect3d(0,0.6,0.8)));c=new $wnd.CL3D.BillboardSceneNode;c.setSize(20,20);c.Pos.Y=30;uc(c.getMaterial(0),Qb.getTextureManager().getTexture('images/actionsign.jpg',true));c.getMaterial(0).Type=12;lc(a.c.getRootSceneNode(),c);d=pc();d.Pos.X=50;d.Pos.Y=20;b=hc(d,Qb);d.addAnimator(b);gc(b,new $wnd.CL3D.Vect3d(0,20,0));lc(a.c.getRootSceneNode(),d);rc(a.c,d)}
+function Eb(){var a,b,c;b=$doc.compatMode;a=S(wb,Rc,1,[Xc]);for(c=0;c<a.length;++c){if(Nc(a[c],b)){return}}a.length==1&&Nc(Xc,a[0])&&Nc('BackCompat',b)?"GWT no longer supports Quirks Mode (document.compatMode=' BackCompat').<br>Make sure your application's host HTML page has a Standards Mode (document.compatMode=' CSS1Compat') doctype,<br>e.g. by using &lt;!doctype html&gt; at the start of your application's HTML page.<br><br>To continue using this unsupported rendering mode and risk layout problems, suppress this message by adding<br>the following line to your*.gwt.xml module file:<br>&nbsp;&nbsp;&lt;extend-configuration-property name=\"document.compatMode\" value=\""+b+'"/&gt;':"Your *.gwt.xml module configuration prohibits the use of the current doucment rendering mode (document.compatMode=' "+b+"').<br>Modify your application's host HTML page doctype, or update your custom 'document.compatMode' configuration property settings."}
+var Uc='',$c=' ',Wc='3darea',Xc='CSS1Compat',bd='[Ljava.lang.',ad='com.google.gwt.core.client.',cd='com.mostka.cl3d.client.',Vc='gecko1_8',_c='java.lang.',Zc='msie',Yc='opera';var _,Ab={},Sc={2:1},Rc={};Bb(1,-1,Rc);_.tM=Qc;Bb(8,1,Sc);Bb(7,8,Sc);Bb(6,7,Sc);Bb(5,6,Sc,n);_.b=null;Bb(13,1,{});var r=0,s=0,t=-1;Bb(15,13,{},G);_.b=null;_.c=null;var C;Bb(22,1,{},P);var T,U;var Ib=null,Jb=null;Bb(37,1,{},Nb);_.g=function Ob(a){var b,c,d,e;e=Jb.getScene();!e&&Fb('some problem');c=pc();c.Pos.X=-50;c.Pos.Y=180;c.Pos.Z=20;Hb(c);b=hc(c,Jb);b.MoveSpeed=0.2;b.RotateSpeed=700;b.setLookByMouseDown(false);c.addAnimator(b);gc(b,new $wnd.CL3D.Vect3d(-200,90,200));lc(e.getRootSceneNode(),c);e.setActiveCamera(c);d=ic(new $wnd.CL3D.Vect3d(20,40,20),new $wnd.CL3D.Vect3d(0,-10,0),new $wnd.CL3D.Vect3d(0,30,0),e.getCollisionGeometry());c.addAnimator(d);return null};Bb(38,1,{},Sb);_.b=null;_.c=null;var Qb=null;Bb(39,1,{},Wb);_.b=null;_.c=null;_.f=null;Bb(40,1,{},Yb);_.g=function Zb(a){var b;b=a;qc(b,this.b.f,0);return null};_.b=null;Bb(41,1,{},_b);_.g=function ac(a){var b;b=a;fc(b,this.b.f.getAbsoluteTransformation());ec(b,this.b.c);return null};_.b=null;Bb(66,1,{},Ac);_.b=0;Bb(67,6,Sc,Hc);Bb(68,6,Sc,Jc);Bb(69,1,{},Lc);_=String.prototype;_.cM={1:1};var Tc=w;var pb=Cc(_c,'Object',1),cb=Cc(ad,'JavaScriptObject$',9),ub=Bc(Uc,'[I',70),tb=Cc(_c,'Throwable',8),nb=Cc(_c,'Exception',7),qb=Cc(_c,'RuntimeException',6),rb=Cc(_c,'StackTraceElement',69),vb=Bc(bd,'StackTraceElement;',71),fb=Cc('com.google.gwt.lang.','SeedUtil',28),gb=Cc(cd,'CL3DTut6$1',37),hb=Cc(cd,'CL3DWraper',38),mb=Cc(_c,'Class',66),sb=Cc(_c,'String',2),wb=Bc(bd,'String;',72),lb=Cc(_c,'ClassCastException',67),bb=Cc(ad,'JavaScriptException',5),kb=Cc(cd,'MySceneNode',39),ib=Cc(cd,'MySceneNode$1',40),jb=Cc(cd,'MySceneNode$2',41),db=Cc(ad,'Scheduler',13),eb=Cc('com.google.gwt.core.client.impl.','SchedulerImpl',15),ob=Cc(_c,'NullPointerException',68);$stats && $stats({moduleName:'CL3DTut6',sessionId:$sessionId,subSystem:'startup',evtGroup:'moduleStartup',millis:(new Date()).getTime(),type:'moduleEvalEnd'});if ($wnd.CL3DTut6) $wnd.CL3DTut6.onScriptLoad();
+--></script></body></html>
