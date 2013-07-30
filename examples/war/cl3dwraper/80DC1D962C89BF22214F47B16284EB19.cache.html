@@ -1,0 +1,81 @@
+<html><head><meta charset="UTF-8" /><script>var $gwt_version = "2.5.1";var $wnd = parent;var $doc = $wnd.document;var $moduleName, $moduleBase;var $strongName = '80DC1D962C89BF22214F47B16284EB19';var $stats = $wnd.__gwtStatsEvent ? function(a) {return $wnd.__gwtStatsEvent(a);} : null,$sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;$stats && $stats({moduleName:'cl3dwraper',sessionId:$sessionId,subSystem:'startup',evtGroup:'moduleStartup',millis:(new Date()).getTime(),type:'moduleEvalStart'});</script></head><body><script><!--
+function F(){}
+function O(){}
+function yc(){}
+function ic(){}
+function Ib(){}
+function tc(a){}
+function pc(){L()}
+function rc(){L()}
+function Ob(a){this.b=a}
+function Rb(a){this.b=a}
+function ec(b,a){b.Tex1=a}
+function gc(b,a){b.Indices=a}
+function o(b,a){b[b.length]=a}
+function C(){C=yc;B=new F}
+function Ab(a){return new yb[a]}
+function Wb(b,a){return b.lookAt(a)}
+function Vb(b,a){return b.setWorld(a)}
+function $b(b,a){return b.addChild(a)}
+function Tb(b,a){return b.addScene(a)}
+function Ub(b,a){return b.drawMesh(a)}
+function wc(b,a){return b.indexOf(a)}
+function fc(b,a){return b.AddMeshBuffer(a)}
+function Zb(b,a){return b.addAnimator(a)}
+function cc(b,a){return b.setActiveCamera(a)}
+function X(a,b){return a.cM&&!!a.cM[b]}
+function Z(a,b){return a!=null&&X(a,b)}
+function t(a,b,c){return a.apply(b,c);var d}
+function G(a,b){!a&&(a=[]);o(a,b);return a}
+function lc(a){var b=yb[a.b];a=null;return b}
+function M(){try{null.a()}catch(a){return a}}
+function y(a){$wnd.clearTimeout(a)}
+function Eb(a){$wnd.temp=a;console.log(a)}
+function m(a){L();this.b=a;K(this)}
+function U(){U=yc;S=[];T=[];V(new O,S,T)}
+function ac(c,b){c.render=function(a){b.g(a)}}
+function dc(b,a){return b.setBackgroundColor(a)}
+function mc(a){return typeof a=='number'&&a>0}
+function $(a){return a!=null&&a.tM!=yc&&!X(a,1)}
+function Yb(a){return new $wnd.CL3D.AnimatorRotation(a)}
+function Xb(a,b){return new $wnd.CL3D.AnimatorCameraFPS(a,b)}
+function bc(c,a,b){return c.registerNodeForRendering(a,b)}
+function wb(a){if(Z(a,2)){return a}return new m(a)}
+function vc(a,b){if(b==null){return false}return String(a)==b}
+function J(a,b){a.length>=b&&a.splice(0,b);return a}
+function kc(a,b,c){var d;d=new ic;mc(c)&&nc(c,d);return d}
+function jc(a,b,c){var d;d=new ic;mc(c!=0?-c:0)&&nc(c!=0?-c:0,d);return d}
+function Q(a,b,c,d,e){var f;f=P(e,d);R(a,b,c,f);return f}
+function R(a,b,c,d){U();W(d,S,T);d.cZ=a;d.cM=b;return d}
+function w(a,b,c){var d;d=u();try{return t(a,b,c)}finally{x(d)}}
+function V(a,b,c){var d=0,e;for(var f in a){if(e=a[f]){b[d]=f;c[d]=e;++d}}}
+function W(a,b,c){U();for(var d=0,e=b.length;d<e;++d){a[b[d]]=c[d]}}
+function _b(c,b){c.OnRegisterSceneNode=function(a){b.g(a)}}
+function z(){return $wnd.setTimeout(function(){q!=0&&(q=0);s=-1},10)}
+function x(a){a&&E((C(),B));--q;if(a){if(s!=-1){y(s);s=-1}}}
+function Y(a){if(a!=null&&(a.tM==yc||X(a,1))){throw new pc}return a}
+function Jb(a,b){!$wnd.debugGWT&&($wnd.debugGWT={});$wnd.debugGWT[a]=b}
+function D(a){var b,c;if(a.b){c=null;do{b=a.b;a.b=null;c=H(b,c)}while(a.b);a.b=c}}
+function E(a){var b,c;if(a.c){c=null;do{b=a.c;a.c=null;c=H(b,c)}while(a.c);a.c=c}}
+function v(b){return function(){try{return w(b,this,arguments)}catch(a){throw a}}}
+function gwtOnLoad(b,c,d,e){$moduleName=c;$moduleBase=d;if(b)try{Bc(vb)()}catch(a){b(c)}else{Bc(vb)()}}
+function l(a){var b,c,d;c=Q(tb,zc,0,a.length,0);for(d=0,b=a.length;d<b;++d){if(!a[d]){throw new rc}c[d]=a[d]}}
+function L(){var a,b,c,d;c=J(N(M()),2);d=Q(tb,zc,0,c.length,0);for(a=0,b=d.length;a<b;++a){d[a]=new tc(c[a])}l(d)}
+function K(a){var b,c,d,e;d=N($(a.b)?Y(a.b):null);e=Q(tb,zc,0,d.length,0);for(b=0,c=e.length;b<c;++b){e[b]=new tc(d[b])}l(e)}
+function N(a){var b,c,d;d=a&&a.stack?a.stack.split('\n'):[];for(b=0,c=d.length;b<c;++b){d[b]=I(d[b])}return d}
+function u(){var a;if(q!=0){a=(new Date).getTime();if(a-r>2000){r=a;s=z()}}if(q++==0){D((C(),B));return true}return false}
+function Lb(a,b,c,d,e){var f;f=new $wnd.CL3D.Vertex3D(true);f.Pos.X=a;f.Pos.Y=b;f.Pos.Z=c;f.TCoords.X=d;f.TCoords.Y=e;return f}
+function xc(c){if(c.length==0||c[0]>Hc&&c[c.length-1]>Hc){return c}var a=c.replace(/^(\s*)/,Cc);var b=a.replace(/\s*$/,Cc);return b}
+function H(b,c){var d,e,f;for(d=0,e=b.length;d<e;++d){f=b[d];try{f[1]?f[0].i()&&(c=G(c,f)):f[0].i()}catch(a){a=wb(a);if(!Z(a,2))throw a}}return c}
+function nc(a,b){var c;b.b=a;if(a==2){c=String.prototype}else{if(a>0){var d=lc(b);if(d){c=d.prototype}else{d=yb[a]=function(){};d.cZ=b;return}}else{return}}c.cZ=b}
+function P(a,b){var c=new Array(b);if(a==3){for(var d=0;d<b;++d){var e=new Object;e.l=e.m=e.h=0;c[d]=e}}else if(a>0){var e=[null,0,false][a];for(var d=0;d<b;++d){c[d]=e}}return c}
+function Bb(a){return $stats({moduleName:$moduleName,sessionId:$sessionId,subSystem:'startup',evtGroup:'moduleStartup',millis:(new Date).getTime(),type:'onModuleLoadStart',className:a})}
+function zb(a,b,c){var d=yb[a];if(d&&!d.cZ){_=d.prototype}else{!d&&(d=yb[a]=function(){});_=d.prototype=b<0?{}:Ab(b);_.cM=c}for(var e=3;e<arguments.length;++e){arguments[e].prototype=_}if(d.cZ){_.cZ=d.cZ;d.cZ=null}}
+function I(a){var b,c,d;d=Cc;a=xc(a);b=a.indexOf('(');c=a.indexOf('function')==0?8:0;if(b==-1){b=wc(a,String.fromCharCode(64));c=a.indexOf('function ')==0?9:0}b!=-1&&(d=xc(a.substr(c,b-c)));return d.length>0?d:'anonymous'}
+function vb(){var a;!!$stats&&Bb('com.google.gwt.useragent.client.UserAgentAsserter');a=Db();vc(Dc,a)||($wnd.alert('ERROR: Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (gecko1_8) does not match the runtime user.agent value ('+a+'). Expect more errors.\n'),undefined);!!$stats&&Bb('com.google.gwt.user.client.DocumentModeAsserter');Cb();!!$stats&&Bb('com.mostka.cl3d.client.CL3DWraper');Hb(new Ib)}
+function Db(){var b=navigator.userAgent.toLowerCase();var c=function(a){return parseInt(a[1])*1000+parseInt(a[2])};if(function(){return b.indexOf(Fc)!=-1}())return Fc;if(function(){return b.indexOf('webkit')!=-1}())return 'safari';if(function(){return b.indexOf(Gc)!=-1&&$doc.documentMode>=9}())return 'ie9';if(function(){return b.indexOf(Gc)!=-1&&$doc.documentMode>=8}())return 'ie8';if(function(){var a=/msie ([0-9]+)\.([0-9]+)/.exec(b);if(a&&a.length==3)return c(a)>=6000}())return 'ie6';if(function(){return b.indexOf('gecko')!=-1}())return Dc;return 'unknown'}
+function Mb(a){var b,c,d,e,f;this.d=new Ob(this);this.e=new Rb(this);this.f=new $wnd.CL3D.SceneNode;_b(this.f,this.d);ac(this.f,this.e);this.c=new $wnd.CL3D.Mesh;this.b=new $wnd.CL3D.MeshBuffer;fc(this.c,this.b);b=[];f=R(sb,zc,-1,[0,2,3,2,1,3,1,0,3,2,0,1]);for(d=0,e=f.length;d<e;++d){c=f[d];b[b.length]=c}gc(this.b,b);o(this.b.Vertices,Lb(0,0,10,0,0));o(this.b.Vertices,Lb(10,0,-10,1,0));o(this.b.Vertices,Lb(0,20,0,0,1));o(this.b.Vertices,Lb(-10,20,-10,1,1));this.b.Vertices[3]=Lb(-50,20,-10,1,1);Eb(this.b);ec(this.b.Mat,a.getTextureManager().getTexture('images/test.jpg',true))}
+function Hb(a){var b,c,d;Gb=new $wnd.CL3D.CopperLicht('3darea');if(!Gb.initRenderer()){$wnd.alert("this browser doesn't support WebGL");return}a.c=new $wnd.CL3D.Scene;Tb(Gb,a.c);dc(a.c,$wnd.CL3D.createColor(1,0,0,64));a.b=new Mb(Gb);Jb('engine',Gb);Jb('scene',a.c);Jb('mynodeScene',a.b.f);Jb('mynode',a.b);Jb('mesh',a.b.c);$b(a.c.getRootSceneNode(),a.b.f);Zb(a.b.f,Yb(new $wnd.CL3D.Vect3d(0,0.6,0.8)));c=new $wnd.CL3D.BillboardSceneNode;c.setSize(20,20);c.Pos.Y=30;ec(c.getMaterial(0),Gb.getTextureManager().getTexture('images/actionsign.jpg',true));c.getMaterial(0).Type=12;$b(a.c.getRootSceneNode(),c);d=new $wnd.CL3D.CameraSceneNode;d.Pos.X=50;d.Pos.Y=20;b=Xb(d,Gb);d.addAnimator(b);Wb(b,new $wnd.CL3D.Vect3d(0,20,0));$b(a.c.getRootSceneNode(),d);cc(a.c,d)}
+function Cb(){var a,b,c;b=$doc.compatMode;a=R(ub,zc,1,[Ec]);for(c=0;c<a.length;++c){if(vc(a[c],b)){return}}a.length==1&&vc(Ec,a[0])&&vc('BackCompat',b)?"GWT no longer supports Quirks Mode (document.compatMode=' BackCompat').<br>Make sure your application's host HTML page has a Standards Mode (document.compatMode=' CSS1Compat') doctype,<br>e.g. by using &lt;!doctype html&gt; at the start of your application's HTML page.<br><br>To continue using this unsupported rendering mode and risk layout problems, suppress this message by adding<br>the following line to your*.gwt.xml module file:<br>&nbsp;&nbsp;&lt;extend-configuration-property name=\"document.compatMode\" value=\""+b+'"/&gt;':"Your *.gwt.xml module configuration prohibits the use of the current doucment rendering mode (document.compatMode=' "+b+"').<br>Modify your application's host HTML page doctype, or update your custom 'document.compatMode' configuration property settings."}
+var Cc='',Hc=' ',Ec='CSS1Compat',Kc='[Ljava.lang.',Jc='com.google.gwt.core.client.',Lc='com.mostka.cl3d.client.',Dc='gecko1_8',Ic='java.lang.',Gc='msie',Fc='opera';var _,yb={},Ac={2:1},zc={};zb(1,-1,zc);_.tM=yc;zb(8,1,Ac);zb(7,8,Ac);zb(6,7,Ac);zb(5,6,Ac,m);_.b=null;zb(13,1,{});var q=0,r=0,s=-1;zb(15,13,{},F);_.b=null;_.c=null;var B;zb(22,1,{},O);var S,T;zb(36,1,{},Ib);_.b=null;_.c=null;var Gb=null;zb(37,1,{},Mb);_.b=null;_.c=null;_.f=null;zb(38,1,{},Ob);_.g=function Pb(a){var b;b=a;bc(b,this.b.f,0);return null};_.b=null;zb(39,1,{},Rb);_.g=function Sb(a){var b;b=a;Vb(b,this.b.f.getAbsoluteTransformation());Ub(b,this.b.c);return null};_.b=null;zb(59,1,{},ic);_.b=0;zb(60,6,Ac,pc);zb(61,6,Ac,rc);zb(62,1,{},tc);_=String.prototype;_.cM={1:1};var Bc=v;var nb=kc(Ic,'Object',1),bb=kc(Jc,'JavaScriptObject$',9),sb=jc(Cc,'[I',63),rb=kc(Ic,'Throwable',8),lb=kc(Ic,'Exception',7),ob=kc(Ic,'RuntimeException',6),pb=kc(Ic,'StackTraceElement',62),tb=jc(Kc,'StackTraceElement;',64),eb=kc('com.google.gwt.lang.','SeedUtil',28),fb=kc(Lc,'CL3DWraper',36),kb=kc(Ic,'Class',59),qb=kc(Ic,'String',2),ub=jc(Kc,'String;',65),jb=kc(Ic,'ClassCastException',60),ab=kc(Jc,'JavaScriptException',5),ib=kc(Lc,'MySceneNode',37),gb=kc(Lc,'MySceneNode$1',38),hb=kc(Lc,'MySceneNode$2',39),cb=kc(Jc,'Scheduler',13),db=kc('com.google.gwt.core.client.impl.','SchedulerImpl',15),mb=kc(Ic,'NullPointerException',61);$stats && $stats({moduleName:'cl3dwraper',sessionId:$sessionId,subSystem:'startup',evtGroup:'moduleStartup',millis:(new Date()).getTime(),type:'moduleEvalEnd'});if ($wnd.cl3dwraper) $wnd.cl3dwraper.onScriptLoad();
+--></script></body></html>

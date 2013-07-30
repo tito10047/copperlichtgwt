@@ -1,0 +1,129 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="CL3DWraper.css">
+    <title>CL3D GWT wraper</title>
+    <script type="text/javascript" src="/images/copperlichtOld.js"></script>
+    <script type="text/javascript" language="javascript" src="asteroid/asteroid.nocache.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-22668293-1']);
+        _gaq.push(['_setDomainName', 'mostka.com']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <style type="text/css">
+        a {
+            color: #A01FCB;
+        }
+
+        a:visited {
+            color: #800080;
+        }
+
+        a:active {
+            color: #8018CB;
+        }
+
+        a:hover {
+            color: #E3B4F3;
+        }
+
+        div.mainplate {
+            background: #ffffff url(images/menuplate.jpg);
+            color: #FFBB4F;
+            padding: 0px;
+            position: absolute;
+            left: 220px;
+            top: 100px;
+            width: 198px;
+            height: 285px;
+            background-color: #000000;
+            border-radius: 5px;
+            border: none;
+        }
+
+        div.mainplate a {
+            color: #FFBB4F;
+        }
+    </style>
+</head>
+<body>
+<noscript>
+    <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled
+        in order for this application to display correctly.
+    </div>
+</noscript>
+
+<div>
+    <div style="width:640px; margin:auto; position:relative; font-size: 9pt; color: #777777;">
+        <span style="font-size:200%">An Asteroid Game</span><br/>
+        Created with the WebGL 3D engine <a target="_blank" href="http://www.ambiera.com/copperlicht/index.html">CopperLicht</a>,
+        the 3d editor <a target="_blank" href="http://www.ambiera.com/coppercube/index.html">CopperCube</a> and the web
+        editor <a target="_blank" href="http://www.ambiera.com/websitepainter/index.html">WebsitePainter</a>
+    </div>
+    <div style="width:640px; margin:auto; position:relative; font-size: 9pt; color: #777777;">
+        <canvas id="3darea" width="640" height="480" style="background-color:#111111; border:1px solid #222222">Sorry,
+            your browser doesn't support canvas.
+        </canvas>
+        <div style="display:none; color:#ffffff; padding:5px; position:absolute; left:20px; top:420px; background-color:#000000; height:37px; width:300px; border-radius:5px; border:1px solid #777777; opacity:0.5;"
+             id="gamehud">
+            <p style="margin:0;padding:0;">Time Remaining:<span id="gametimeremaining">0.00s</span> Your Score:<span
+                    id="gamescore">0</span></p>
+
+            <p style="margin:0;padding:0;"><b>Cursor keys</b>: Look. <b>Space</b>: Shoot. <b>Shift</b>: Thrust</p>
+        </div>
+        <div id="cl_loadinglabel"
+             style="display:none; color:#ffffff; padding:5px; position:absolute; left:280px; top:200px; background-color:#000000; height:20px; width:100px; border-radius:5px; border:1px solid #777777;  opacity:0.5;">
+            <p style="margin:0; padding-left:30px; padding-bottom:5px;">Loading...</p>
+            <img style="position:absolute; left:5px; top:3px;" src="images/loading2.gif"/>
+        </div>
+        <div id="cl_loadingbutton"
+             style="text-align:center; display:block; position:absolute; left:220px; top:220px; width:200px; height: 40px; background:url(images/startplate.jpg); padding-top:10px;">
+            <a id="startMapLoading" style="color:#FFBB4F; font-size:12pt;" href="#">Click here to start the
+                game</a>
+        </div>
+        <div id="cl_nowebgl"
+             style="text-align:center; display:none; color:#FFBB4F; padding:5px; position:absolute; left:180px; top:100px; background-color:#000000; height:40px; width:300px; border-radius:5px; border:1px solid #777777;  opacity:1;">
+            <p style="margin:0; padding-left:5px; padding-bottom:5px;">Sorry, your browser does not appear to support
+                WebGL (or it is disabled). You can get <a href="http://www.ambiera.com/copperlicht/browsersupport.html">a
+                    list of supported browsers here</a>
+                <br/><br/>But there is a <a href="http://www.youtube.com/watch?v=-H8hP69697w">Youtube Video</a> of the
+                game available: <br/><br/><a href="http://www.youtube.com/watch?v=-H8hP69697w"><img
+                        src="images/youtubeasteroids.jpg"/></a>.</p>
+        </div>
+        <div id="infoplate" style="display:none" class="mainplate">
+            <p style="margin:0; padding-left:5px; padding-top: 60px; padding-bottom:5px; text-align:center;">
+                <span id="infoplattext"></span><br/><br/>
+                <a onclick="getElementById('game_mainmenu').style.display = 'block'; getElementById('infoplate').style.display = 'none';" href="#">Back</a>
+            </p>
+        </div>
+        <div id="game_mainmenu" class="mainplate" style="display: none;">
+            <p style="margin:0; padding-left:5px; padding-top: 60px; padding-bottom:5px; text-align:center;">
+                <a id="startGame" href="#">Start New Game</a><br/><br/>
+                <a id="showInfoPlate" href="#">Info</a><br/><br/>
+                <a id="disableMusic" href="#">Enable/Disable Music</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- HTML 5 audio -->
+<audio id="mainmenumusic" src="audio/menu_low.ogg" loop="true" autobuffer="autobuffer"></audio>
+<audio id="explosion" src="audio/expl.ogg" autobuffer="autobuffer"></audio>
+<audio id="shootsound" src="audio/shoot.ogg" autobuffer="autobuffer"></audio>
+<audio id="gamemusic" src="audio/game_low.ogg" autobuffer="autobuffer"></audio>
+</html>
