@@ -6,14 +6,14 @@ demos and main page: http://copperlicht.mostka.com/
 gwt source was generated. some part of code is not checked. unknow arguments is set as JavascriptObject, so when you use method, change declaratisons.
 
 dont forget inherit module
-```
+```xml
    <inherits name='com.mostka.cl3d.CL3DWraper'/>
 ```
 
 
 Example od tutorial 2
 
-```
+```java
 public class CL3DTut2 implements EntryPoint {
 
    private static CopperLicht engine;
